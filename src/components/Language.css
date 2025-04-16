@@ -1,0 +1,180 @@
+.language-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 50px;
+    width: 100%;
+    height: 100vh;
+    background: #e9e7e7;
+    box-sizing: border-box;
+    scale: 97%;
+}
+
+.language-left {
+    flex: 1;
+    text-align: left;
+}
+
+.language-left h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.language-right {
+    flex: 1.6;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-template-rows: repeat(4, 1fr); /* 4 rows */
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    
+    border-radius: 15px;
+    
+    height: 110%;
+}
+
+.lang-btn {
+    padding: 30px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* French */
+.french {
+    background-color: #6c5ce7;
+}
+.french:hover {
+    background-color: #4834d4;
+}
+
+/* German */
+.german {
+    background-color: #355c7d;
+}
+.german:hover {
+    background-color: #2c4863;
+}
+
+/* Japanese */
+.japanese {
+    background-color: #ff6b6b;
+}
+.japanese:hover {
+    background-color: #ff5252;
+}
+
+/* Mandarin */
+.chinese {
+    background-color: #4CAF50;
+}
+.chinese:hover {
+    background-color: #45a049;
+}
+
+/* Russian */
+.russian {
+    background-color: #a29bfe;
+}
+.russian:hover {
+    background-color: #8181f7;
+}
+
+/* Portuguese */
+.portuguese {
+    background-color: #00b894;
+}
+.portuguese:hover {
+    background-color: #00a884;
+}
+
+/* Spanish */
+.spanish {
+    background-color: #fdcb6e;
+    color: black;
+}
+.spanish:hover {
+    background-color: #e0b347;
+}
+
+/* English */
+.english {
+    background-color: #ec2424;
+}
+.english:hover {
+    background-color: #f4c1c1;
+}
+
+/* Korean */
+.korean {
+    background-color: #ff7f50;
+}
+.korean:hover {
+    background-color: #e0896b;
+}
+
+/* Dutch */
+.dutch {
+    background-color: #f1c40f;
+}
+.dutch:hover {
+    background-color: #e0ac1b;
+}
+
+/* Italian */
+.italian {
+    background-color: #f67280;
+}
+.italian:hover {
+    background-color: #d94f64;
+}
+
+/* Indonesian */
+.indonesian {
+    background-color: #00cec9;
+}
+.indonesian:hover {
+    background-color: #00a896;
+}
+
+/* Arabic */
+.arabic {
+    background-color: #e1b16a;
+}
+.arabic:hover {
+    background-color: #c99a57;
+}
+
+/* Hindi */
+.hindi {
+    background-color: #f8b195;
+}
+.hindi:hover {
+    background-color: #e08f78;
+}
+
+/* Swahili */
+.swahili {
+    background-color: #88b04b;
+}
+.swahili:hover {
+    background-color: #6a8a38;
+}
+
+/* Turkish */
+.turkish {
+    background-color: #354f57;
+}
+.turkish:hover {
+    background-color: #2a3c42;
+}

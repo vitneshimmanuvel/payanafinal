@@ -1,0 +1,111 @@
+
+.container {
+    display: flex;
+    height: 100vh;
+    font-family: 'Georgia', serif;
+    background-color: #f0fff5;
+    border: 1px solid rgb(173, 171, 171);
+    scale: 97%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  
+
+  .left-panel {
+    flex: 1;
+    background-color: rgb(238, 238, 238);
+    padding: 50px;
+    box-sizing: border-box;
+  }
+  
+  .left-heading {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .help-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .help-form label {
+    margin: 10px 0 5px;
+    font-size: 18px;
+  }
+  
+  .help-form input {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .help-form button {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Right Panel */
+  .right-panel {
+    margin-top: 15%;
+    flex: 1;
+    background-color: #f0fff5;
+    padding: 50px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  .right-heading {
+    font-family: 'Arial', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .subtext {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #555;
+  }
+  
+  /* WhatsApp button */
+  .whatsapp-button {
+    background-color: #25d366;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    margin-left: 35%;
+  }
+  
+  /* Social Icons */
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .icon {
+    font-size: 30px;
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .icon:hover {
+    transform: scale(1.2);
+  }
+  
