@@ -10,29 +10,32 @@ import {
 
 const Footer = () => {
   const openMap = () => {
-    window.open("https://maps.app.goo.gl/szEzTTpaWrLQduQC8", "_blank");
+    window.open(
+      "https://www.google.com/maps/place/Payana+Overseas+Solutions/@11.3373413,77.7094131,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba96f1e295f1439:0x270c72cecda7d00b!8m2!3d11.3373361!4d77.711988!16s%2Fg%2F11rw8zmhkc?entry=ttu",
+      "_blank"
+    );
   };
 
   const sections = [
     {
       title: "Contact",
       email: "payanaoverseas@gmail.com",
-      phone: "+91 9003619777",
+      phone: "+91 90036 19777",
     },
     {
       title: "Study",
       email: "study@payana.com",
-      phone: "+91 9876543210",
+      phone: "+91 70108 38005",
     },
     {
       title: "Work",
       email: "work@payana.com",
-      phone: "+91 9123456780",
+      phone: "+91 70108 38005",
     },
     {
       title: "About Us",
-      email: "info@payana.com",
-      phone: "+91 9090909090",
+      email: "",
+      phone: "",
     },
   ];
 
@@ -42,12 +45,16 @@ const Footer = () => {
         {sections.map((section, index) => (
           <div className="footer-section" key={index}>
             <h3>{section.title}</h3>
-            <p>
-              <FaEnvelope className="icon" /> {section.email}
-            </p>
-            <p>
-              <FaPhone className="icon" /> {section.phone}
-            </p>
+            {section.email && (
+              <p>
+                <FaEnvelope className="icon" /> {section.email}
+              </p>
+            )}
+            {section.phone && (
+              <p>
+                <FaPhone className="icon" /> {section.phone}
+              </p>
+            )}
           </div>
         ))}
 
