@@ -1,6 +1,6 @@
 import React from 'react'
 import { mbdata } from './mbdata.js'
-import './MBBSinfo.css'
+import './MBBSInfo.css'
 
 const MBBSInfo = () => {
   return (
