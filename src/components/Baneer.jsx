@@ -12,7 +12,7 @@ const BannerSection = () => {
   return (
     <div className="banner-container">
       <div className="banner-left">
-        <img src='/Untitled design (3).png' className='bannerimg' alt="Banner Image" />
+        <img src='Untitled design (3).png' className='bannerimg' alt="Banner Image" />
       </div>
       <div className="banner-right">
         <button className="category-btn" onClick={() => scrollToSection('tech')}>Tech/ARTS</button>

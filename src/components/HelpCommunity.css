@@ -1,111 +1,339 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.container {
-    display: flex;
-    height: 100vh;
-    font-family: 'Georgia', serif;
-    background-color: #f0fff5;
-    border: 1px solid rgb(173, 171, 171);
-    scale: 97%;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-  
 
-  .left-panel {
-    flex: 1;
-    background-color: rgb(238, 238, 238);
-    padding: 50px;
-    box-sizing: border-box;
+
+.help-community-container {
+  width: 100%;
+  overflow-x: hidden;
+  scale: 97%;
+  border: 1px solid black;
+}
+
+/* Banner Slideshow */
+.banner-slideshow {
+  position: relative;
+  height: 500px; /* Adjusted height for landscape orientation */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #354F57;
+}
+
+.banner-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-slide.active {
+  opacity: 1;
+}
+
+.banner-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: 16/9; /* Landscape aspect ratio */
+}
+
+/* Banner Dots */
+.banner-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: white;
+}
+
+/* Content Container */
+.content-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background-color: #fff; /* White background for content area */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Left Panel - Form */
+.left-panel {
+  background-color: #e4efff;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 70vh;
+}
+
+.left-heading {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.help-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+label {
+  font-weight: 500;
+  color: #555;
+}
+
+input {
+  padding: 9px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.submit-btn {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+/* Right Panel - Community Info */
+.right-panel {
+  background-color: #aafac4;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.right-heading {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #2e7d32;
+}
+
+.subtext {
+  font-size: 15px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+/* WhatsApp button */
+.whatsapp-button {
+  background-color: #25d366;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.whatsapp-button:hover {
+  background-color: #21b652;
+  transform: translateY(-2px);
+}
+
+.social-iconss {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  border-radius: 50%;
+  color: #333;
+  text-decoration: none;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  background-color: #f0f0f0;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .content-container {
+    grid-template-columns: 1fr;
+    height: auto;
   }
   
-  .left-heading {
-    font-size: 36px;
-    margin-bottom: 30px;
+  .banner-slideshow {
+    height: 300px;
   }
   
-  .help-form {
-    display: flex;
-    flex-direction: column;
+  .left-panel, .right-panel {
+    padding: 20px;
   }
-  
-  .help-form label {
-    margin: 10px 0 5px;
-    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .banner-slideshow {
+    height: 250px;
   }
-  
-  .help-form input {
-    padding: 10px;
-    font-size: 16px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .help-form button {
-    margin-top: 20px;
-    padding: 12px;
-    background-color: #1e90ff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  /* Right Panel */
-  .right-panel {
-    margin-top: 15%;
-    flex: 1;
-    background-color: #f0fff5;
-    padding: 50px;
-    text-align: center;
-    box-sizing: border-box;
-  }
-  
-  .right-heading {
-    font-family: 'Arial', sans-serif;
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-  
-  .subtext {
-    font-size: 16px;
-    margin-bottom: 30px;
-    color: #555;
-  }
-  
-  /* WhatsApp button */
-  .whatsapp-button {
-    background-color: #25d366;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 14px 20px;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-bottom: 30px;
-    margin-left: 35%;
-  }
-  
-  /* Social Icons */
-  .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-  }
-  
-  .icon {
-    font-size: 30px;
-    color: #333;
-    cursor: pointer;
-    transition: transform 0.3s;
-  }
-  
-  .icon:hover {
-    transform: scale(1.2);
-  }
-  
+}
+/* Existing CSS remains the same */
+
+/* Additional CSS for multi-step form */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.square-btn {
+  padding: 10px;
+  font-size: 0.9rem;
+  border: 1px solid #333;
+  border-radius: 3px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.square-btn:hover,
+.square-btn.active {
+  background-color: #333;
+  color: #fff;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.full-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.full-btn:hover {
+  background-color: #45a049;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.checkbox-group input {
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+/* Popup styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 5px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.popup-content h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.popup-content p {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.popup-content strong {
+  font-weight: bold;
+  margin-right: 5px;
+}

@@ -99,3 +99,40 @@
 
 .category-btn:nth-child(6) { background-color: #16a085; } /* Work */
 .category-btn:nth-child(6):hover { background-color: #12806a; }
+@media (max-width: 768px) {
+  .banner-container {
+    flex-direction: column;
+    height: auto;
+    scale: 100%;
+  }
+
+  .banner-left {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgb(164, 163, 163);
+    padding: 1rem 0;
+  }
+
+  .banner-left img {
+    width: 90%;
+    height: auto;
+    scale: 100%;
+  }
+
+  .banner-right {
+    width: 100%;
+    height: auto;
+    grid-template-columns: repeat(2, 1fr); /* Keep two columns */
+    margin-top: 2rem;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .category-btn {
+    height: auto;
+    padding: 1rem;
+    font-size: 1.1rem;
+    width: 100%;
+  }
+}

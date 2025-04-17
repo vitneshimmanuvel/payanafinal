@@ -4,21 +4,21 @@ import './MBBSinfo.css'
 
 const MBBSInfo = () => {
   return (
-    <div className='heroii'>
-      <div className="hero2text">
+    <div className='mbbs-hero'>
+      <div className="mbbs-text">
         <h1>MBBS Abroad</h1>
         <p>
           Explore top countries to pursue MBBS with expert guidance and support throughout the process.
         </p>
       </div>
-      <div className="threed">
+      <div className="mbbs-cards">
         {mbdata.map((item, index) => (
-          <div className="cardvisa" key={index}>
-            <div className="cardvisa-inner">
-              <div className="cardvisa-front">
+          <div className="mbbs-card" key={index}>
+            <div className="mbbs-card-inner">
+              <div className="mbbs-card-front">
                 <h2>{item.name}</h2>
               </div>
-              <div className="cardvisa-back">
+              <div className="mbbs-card-back">
                 <ul>
                   {item.details.map((detail, i) => (
                     <li key={i}>{detail}</li>

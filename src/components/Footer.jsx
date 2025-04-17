@@ -74,7 +74,7 @@ const Footer = () => {
       <div className="footer-right" onClick={openMap}>
         <img
           className="map-image"
-          src="/Screenshot 2025-04-15 152311.png"
+          src="Screenshot 2025-04-15 152311.png"
           alt="Map Location"
         />
       </div>

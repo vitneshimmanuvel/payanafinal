@@ -8,63 +8,76 @@
     border: 1px solid rgb(74, 74, 74);
     scale: 97%;
     gap: 2rem;
-}
-
-.news-left {
+    overflow-y: auto;
+  }
+  
+  .news-left {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     border-right: 1px solid rgb(44, 44, 44);
     padding-right: 2rem;
-}
-
-.news-left h1 {
+  }
+  
+  .news-left h1 {
     font-size: 2.5rem;
     color: #333;
     margin-bottom: 1rem;
-}
-
-.bold {
+  }
+  
+  .bold {
     font-weight: bold;
     color: #4d4d4d;
-}
-
-.news-card {
+  }
+  
+  /* Horizontally scrollable card container */
+  .news-cards-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .news-card {
+    min-width: 300px;
+    width: 98%;
+    flex-shrink: 0;
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 12px;
     padding: 1.5rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-}
-
-.news-image {
+    scroll-snap-align: start;
+    height: 79vh;
+  }
+  
+  .news-image {
     width: 100%;
     height: auto;
     border-radius: 10px;
     max-height: 300px;
     object-fit: cover;
-}
-
-.news-date-time {
+  }
+  
+  .news-date-time {
     display: flex;
     justify-content: space-between;
     color: #666;
     font-size: 0.9rem;
-    margin-top: 0.5rem;
-}
-
-.news-description {
+  }
+  
+  .news-description {
     color: #555;
     font-size: 1rem;
     line-height: 1.5;
-}
-
-.news-tag {
+  }
+  
+  .news-tag {
     display: inline-block;
     background-color: #e4f7ea;
     color: #2e7d32;
@@ -72,16 +85,16 @@
     border-radius: 15px;
     font-size: 0.85rem;
     align-self: flex-start;
-}
-
-.news-right {
+  }
+  
+  .news-right {
     flex: 1;
     display: flex;
     flex-direction: column;
     padding-left: 2rem;
-}
-
-.input-question {
+  }
+  
+  .input-question {
     padding: 0.8rem 1.2rem;
     border-radius: 25px;
     border: 1px solid #ccc;
@@ -89,39 +102,25 @@
     font-size: 1rem;
     outline: none;
     width: 100%;
-}
-
-.ask-heading {
+  }
+  
+  .ask-heading {
     color: #555;
     margin-bottom: 1.5rem;
     font-size: 1.2rem;
-}
-
-.ask-area-container {
-    position: relative;
-    flex: 1;
+  }
+  
+  .ask-area-container {
     background-color: rgb(202, 224, 232);
     border-radius: 3px;
     padding: 1%;
-    
-}
-
-.ask-area {
-    width: 100%;
-    height: 550px;
-    padding: 1.5rem;
-    background-color: #eef5ff;
-    border: none;
-    border-radius: 12px;
-    resize: none;
-    font-size: 1rem;
-    outline: none;
-    line-height: 1.6;
-}
-
-.submit-btn {
+    overflow-y: auto;
+    height: 500px; /* <<< You can adjust this height */
+  }
+  
+  .submit-btn {
     margin-left: auto;
-     width: 30%;
+    width: 30%;
     background-color: #ea2c2c;
     color: white;
     border: none;
@@ -130,12 +129,13 @@
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.submit-btn:hover {
+  }
+  
+  .submit-btn:hover {
     background-color: #d92121;
-}
-.button-container {
+  }
+  
+  .button-container {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
@@ -156,3 +156,26 @@
   .refresh-btn:hover {
     background-color: #218838;
   }
+  
+  /* Responsive stacking */
+  @media (max-width: 768px) {
+    .news-gpt-container {
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .news-left,
+    .news-right {
+      padding: 0;
+      border: none;
+    }
+  
+    .news-right {
+      padding-top: 2rem;
+    }
+  
+    .ask-area-container {
+      height: 300px; /* Optional: slightly smaller on mobile */
+    }
+  }
+  

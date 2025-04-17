@@ -7,6 +7,9 @@ scrollbar-width: none;
 font-family: sans-serif;
 }
 .total{
-
+  scroll-behavior: smooth;
   background-color: #fffbfb;
+}
+a {
+  scroll-behavior: smooth;
 }

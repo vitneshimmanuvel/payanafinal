@@ -178,3 +178,32 @@
 .turkish:hover {
     background-color: #2a3c42;
 }
+
+@media (max-width: 768px) {
+    .language-section {
+      flex-direction: column;
+      padding: 50px 20px;
+      height: auto;
+    }
+  
+    .language-left,
+    .language-right {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .language-right {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
+      grid-template-rows: auto;
+    }
+  
+    .language-left h1 {
+      font-size: 2rem;
+    }
+  
+    .lang-btn {
+      padding: 20px;
+      font-size: 1.2rem;
+    }
+  }
+ 
