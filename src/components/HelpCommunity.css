@@ -13,7 +13,7 @@
   border: 1px solid black;
 }
 
-/* Banner Slideshow */
+
 .banner-slideshow {
   position: relative;
   height: 500px; /* Adjusted height for landscape orientation */
@@ -135,7 +135,18 @@ input {
 .submit-btn:hover {
   background-color: #45a049;
 }
+.biigy{
+  font-size: 2rem;
+  margin-bottom: 10%;
+  
+}
 
+.worky{
+  position: absolute;
+  top: 49%;
+  font-size: 2.3rem;
+  color: #354F57;
+}
 /* Right Panel - Community Info */
 .right-panel {
   background-color: #aafac4;

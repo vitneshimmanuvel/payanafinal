@@ -20,16 +20,16 @@ const Footer = () => {
     {
       title: "Contact",
       email: "payanaoverseas@gmail.com",
-      phone: "+91 90036 19777",
+      phone: "+1 647 834 2003",
     },
     {
       title: "Study",
-      email: "study@payana.com",
+      email: "study@payanaoverseas.com",
       phone: "+91 70108 38005",
     },
     {
       title: "Work",
-      email: "work@payana.com",
+      email: "work@payanaoverseas.com",
       phone: "+91 70108 38005",
     },
     {

@@ -1,23 +1,24 @@
 .banner-container {
   display: flex;
-  width: 100%;
-  height: 87vh;
-  border: 1px solid rgb(164, 163, 163);
+  width: 99%;
+  height:79vh;
+  border: 1px solid rgb(107, 107, 107);
   margin-left: 0%;
-  scale: 95%;
+  scale: 96%;
+  
 }
-
 .banner-left {
-  width: 50%;
+  width: 45%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #dfe6e9;
-  border-right: 1px solid rgb(164, 163, 163);
+
   overflow: hidden;
+  scale: 100%;
+  margin: 20px 0;
 }
 .banner-left img{
-  scale: 73%;
+  width: 100%;
 }
 .banner-placeholder {
   width: 80%;
@@ -37,16 +38,18 @@
   width: 45%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+ 
+  row-gap: 1rem;
+  column-gap: 4rem;
   place-items: center;
-  background-color: #ffffff;
   height: 70%;
-  margin-top: 5%;
+  margin-top: 10%;
+  margin-left: 2%;
   padding: 2rem;
 }
 
 .category-btn {
-  font-size: 1.3rem;
+  font-size: 1.23rem;
   font-weight: 600;
   border: none;
   width: 100%;

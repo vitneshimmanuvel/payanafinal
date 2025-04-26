@@ -2,7 +2,9 @@ import './App.css'
 import BannerSection from './components/Baneer'
 import DentalProgram from './components/DentalProgram'
 import Footer from './components/Footer'
+import FooterBanner from './components/FooterBanner'
 import HelpCommunity from './components/HelpCommunity'
+import Invest from './components/Invest'
 import Language from './components/Language'
 import MBBSInfo from './components/MBBSInfo'
 import Navbartop from './components/Navbartop'
@@ -10,7 +12,6 @@ import NewsGPT from './components/NewsGPT'
 import StudyOptions from './components/StudyOptions'
 import Techarts from './components/Techarts'
 import TestimonialSection from './components/TestimonialSection'
-
 function App() {
   return (
     <div className='total'>
@@ -34,17 +35,18 @@ function App() {
       <div id='language'>
         <Language />
       </div>
-
-      <div id='invest'>
-        <NewsGPT />
-      </div>
-
+           
       <div id='work'>
-        <HelpCommunity />
+      <HelpCommunity />
       </div>
-
+      
+      <div id='invest'>
+        <Invest/>
+      </div>
+      <NewsGPT />
       <TestimonialSection />
       <Footer />
+      <FooterBanner/>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaPhone, FaWhatsapp, FaBars } from 'react-icons/fa';
+import { FaPhone, FaWhatsapp,FaEnvelope } from 'react-icons/fa';
 import './Navbartop.css';
 
 const Navbartop = () => {
@@ -44,16 +44,18 @@ const Navbartop = () => {
               <FaWhatsapp className="icon" size={20} />
               <span>+91 90039 46446</span>
             </li>
+            <li>
+              <FaEnvelope className="icon" size={20} />
+              <span>Study@payana.com</span>
+            </li>
           </ul>
         </div>
 
-        <div className='burger-menu' onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-          <FaBars size={24} />
-        </div>
+        
 
         <div className={`contact-nav ${isMobileMenuOpen ? 'show' : ''}`}>
           <ul className='nav-links'>
-            {['tech', 'study', 'mbbs', 'language', 'invest', 'work'].map((category, index) => (
+            {['tech',  'mbbs','study', 'language', 'invest', 'work'].map((category, index) => (
               <li
                 key={category}
                 data-category={category}
@@ -62,7 +64,7 @@ const Navbartop = () => {
                 onClick={() => handleClickScroll(category)}
                 className={activeCategory === category ? 'active' : ''}
               >
-                {['Tech/ARTS', 'Study', 'MBBS', 'Language', 'Invest', 'Work'][index]}
+                {['Study Tech', 'Study MBBS', 'Study Arts ', 'Language', 'Invest', 'Work'][index]}
               </li>
             ))}
           </ul>

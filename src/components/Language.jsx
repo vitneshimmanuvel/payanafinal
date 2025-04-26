@@ -1,55 +1,77 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Language.css';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
+const levelDescriptions = {
+  French: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+  German: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+  Japanese: ['N5', 'N4', 'N3', 'N2', 'N1'],
+  Mandarin: ['HSK 1', 'HSK 2', 'HSK 3', 'HSK 4', 'HSK 5', 'HSK 6'],
+  Russian: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+  Portuguese: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+  Spanish: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+  English: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+  Korean: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+  Dutch: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+  Italian: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+  Indonesian: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+  Arabic: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+  Hindi: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+  Swahili: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+  Turkish: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+};
+
+const LanguageCard = ({ language, className, levels }) => {
+  return (
+    <div className="lang-card">
+      <div className="lang-card-inner">
+        <div className={`lang-card-front ${className}`}>
+          {language}
+        </div>
+        <div className={`lang-card-back ${className}`}>
+          {levels.map((level, index) => (
+            <div key={index} className="lang-level">{level}</div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Language = () => {
-  useEffect(() => {
-    gsap.to(".lang-btn", {
-      scrollTrigger: {
-        trigger: ".language-right", // Use the container of the buttons as the trigger
-        start: "top bottom", // Start the animation when the top of the trigger element reaches the bottom of the viewport
-        end: "bottom top",  // End the animation when the bottom of the trigger element reaches the top of the viewport
-        toggleActions: "restart none restart none" // Restart the animation when entering, do nothing when leaving, restart when re-entering, do nothing when re-leaving
-      },
-    
-      transformOrigin: "center",
-      duration: 1,
-      stagger: {
-        each: 0.05, // 50ms delay between each button's animation start
-        from: "random",
-        grid: "auto",
-        amount: 1
-      },
-      ease: "power1.inOut"
-    });
-  }, []);
+  const languages = [
+    { name: 'French', class: 'french' },
+    { name: 'German', class: 'german' },
+    { name: 'Japanese', class: 'japanese' },
+    { name: 'Mandarin', class: 'chinese' },
+    { name: 'Russian', class: 'russian' },
+    { name: 'Portuguese', class: 'portuguese' },
+    { name: 'Spanish', class: 'spanish' },
+    { name: 'English', class: 'english' },
+    { name: 'Korean', class: 'korean' },
+    { name: 'Dutch', class: 'dutch' },
+    { name: 'Italian', class: 'italian' },
+    { name: 'Indonesian', class: 'indonesian' },
+    { name: 'Arabic', class: 'arabic' },
+    { name: 'Hindi', class: 'hindi' },
+    { name: 'Swahili', class: 'swahili' },
+    { name: 'Turkish', class: 'turkish' },
+  ];
 
   return (
     <section className="language-section">
       <div className="language-left">
         <h1>Languages Training</h1>
-        <p>language is the ultimate tool to move forward</p>
+        <p>Language is the ultimate tool to move forward</p>
       </div>
       <div className="language-right">
-        <button className="lang-btn french" style={{scale: 0.01}}>French</button>
-        <button className="lang-btn german" style={{scale: 0.01}}>German</button>
-        <button className="lang-btn japanese" style={{scale: 0.01}}>Japanese</button>
-        <button className="lang-btn chinese" style={{scale: 0.01}}>Mandarin</button>
-        <button className="lang-btn russian" style={{scale: 0.01}}>Russian</button>
-        <button className="lang-btn portuguese" style={{scale: 0.01}}>Portuguese</button>
-        <button className="lang-btn spanish" style={{scale: 0.01}}>Spanish</button>
-        <button className="lang-btn english" style={{scale: 0.01}}>English</button>
-        <button className="lang-btn korean" style={{scale: 0.01}}>Korean</button>
-        <button className="lang-btn dutch" style={{scale: 0.01}}>Dutch</button>
-        <button className="lang-btn italian" style={{scale: 0.01}}>Italian</button>
-        <button className="lang-btn indonesian" style={{scale: 0.01}}>Indonesian</button>
-        <button className="lang-btn arabic" style={{scale: 0.01}}>Arabic</button>
-        <button className="lang-btn hindi" style={{scale: 0.01}}>Hindi</button>
-        <button className="lang-btn swahili" style={{scale: 0.01}}>Swahili</button>
-        <button className="lang-btn turkish" style={{scale: 0.01}}>Turkish</button>
+        {languages.map((lang, i) => (
+          <LanguageCard
+            key={i}
+            language={lang.name}
+            className={lang.class}
+            levels={levelDescriptions[lang.name]}
+          />
+        ))}
       </div>
     </section>
   );

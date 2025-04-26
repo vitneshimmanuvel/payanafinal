@@ -1,10 +1,11 @@
-import React from 'react'
-import { mbdata } from './mbdata.js'
-import './MBBSInfo.css'
+// MBBSInfo.js
+import React from 'react';
+import { mbdata } from './mbdata.js';
+import './MBBSInfo.css';
 
 const MBBSInfo = () => {
   return (
-    <div className='mbbs-hero'>
+    <div className="mbbs-hero">
       <div className="mbbs-text">
         <h1>MBBS Abroad</h1>
         <p>
@@ -15,10 +16,10 @@ const MBBSInfo = () => {
         {mbdata.map((item, index) => (
           <div className="mbbs-card" key={index}>
             <div className="mbbs-card-inner">
-              <div className="mbbs-card-front">
+              <div className="mbbs-card-front" style={{ backgroundImage: `url(/${item.name}.png)` }}>
                 <h2>{item.name}</h2>
               </div>
-              <div className="mbbs-card-back">
+              <div className={`mbbs-card-back ${item.name === 'Germany' ? 'light-green-bg' : ''}`}>
                 <ul>
                   {item.details.map((detail, i) => (
                     <li key={i}>{detail}</li>
@@ -30,7 +31,7 @@ const MBBSInfo = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MBBSInfo
+export default MBBSInfo;

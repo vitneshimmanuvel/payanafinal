@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './HelpCommunity.css';
 import { FaWhatsapp, FaInstagram, FaFacebookF, FaXTwitter } from 'react-icons/fa6';
 
-// Banner Images
 const bannerImages = [
   "ChatGPT Image Apr 17, 2025, 02_59_38 PM.png",
   "ChatGPT Image Apr 17, 2025, 03_00_15 PM.png",
@@ -14,64 +13,89 @@ const HelpCommunity = () => {
   const [currentBanner, setCurrentBanner] = useState(0);
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    country: '',
-    qualification: '',
+    occupation: '',
+    education: '',
     experience: '',
-    jobTitle: '',
     name: '',
     email: '',
     phone: '',
-    whatsapp: false,
-    termsAccepted: false
   });
-
+  const [formErrors, setFormErrors] = useState({});
   const [showPopup, setShowPopup] = useState(false);
 
+  // Automatic banner slideshow
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBanner((prev) => (prev + 1) % bannerImages.length);
+    }, 3000); // Change every 3 seconds
+    return () => clearInterval(interval);
+  }, []);
+
   const handleNext = () => {
-    if (step === 1 && formData.country) setStep(2);
-    else if (step === 2 && formData.qualification) setStep(3);
+    if (step === 1 && formData.occupation) setStep(2);
+    else if (step === 2 && formData.education) setStep(3);
     else if (step === 3 && formData.experience) setStep(4);
-    else if (step === 4 && formData.jobTitle) setStep(5);
+  };
+
+  const validateForm = () => {
+    let errors = {};
+    let isValid = true;
+
+    if (!formData.name.trim()) {
+      errors.name = 'Name is required';
+      isValid = false;
+    }
+
+    if (!formData.email.trim()) {
+      errors.email = 'Email is required';
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.email = 'Invalid email format';
+      isValid = false;
+    }
+
+    if (!formData.phone) {
+      errors.phone = 'Phone number is required';
+      isValid = false;
+    } else if (!/^[0-9]{10}$/.test(formData.phone)) {
+      errors.phone = 'Please enter a valid phone number (10 digits)';
+      isValid = false;
+    }
+
+    setFormErrors(errors);
+    return isValid;
   };
 
   const handleSubmit = () => {
-    if (formData.name && formData.email && formData.phone && formData.termsAccepted) {
-      setStep(6);
+    const isValid = validateForm();
+    if (isValid) {
+      setStep(5);
     }
   };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (formErrors[e.target.name]) {
+      setFormErrors({ ...formErrors, [e.target.name]: null });
+    }
   };
-
-  const handleCheckboxChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.checked });
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBanner((prevIndex) => (prevIndex + 1) % bannerImages.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="help-community-container">
       {/* Banner Slideshow */}
       <div className="banner-slideshow">
         {bannerImages.map((image, index) => (
-          <div 
+          <div
             key={index}
             className={`banner-slide ${index === currentBanner ? 'active' : ''}`}
           >
             <img src={image} alt={`Banner ${index + 1}`} />
           </div>
         ))}
-        
+
         <div className="banner-dots">
           {bannerImages.map((_, index) => (
-            <span 
+            <span
               key={index}
               className={`dot ${index === currentBanner ? 'active' : ''}`}
               onClick={() => setCurrentBanner(index)}
@@ -83,27 +107,28 @@ const HelpCommunity = () => {
       <div className="content-container">
         {/* Left Panel - Multi-step Form */}
         <div className="left-panel">
+          <h1 className='worky'>WORK PROFILE ASSESSMENT</h1>
           {step === 1 && (
             <div>
-              <h1 className="left-heading">Select Country</h1>
+              <h1 className="left-heading">Your occupation</h1>
               <div className="button-grid">
-                {['UK', 'US', 'Australia', 'Canada', 'New Zealand', 'Germany'].map((country) => (
+                {['IT', 'Skilled Worker', 'Medicine', 'Administration', 'Others'].map((occ) => (
                   <button
-                    key={country}
-                    className={`square-btn ${formData.country === country ? 'active' : ''}`}
-                    onClick={() => setFormData({ ...formData, country })}
+                    key={occ}
+                    className={`square-btn ${formData.occupation === occ ? 'active' : ''}`}
+                    onClick={() => setFormData({ ...formData, occupation: occ })}
                   >
-                    {country}
+                    {occ}
                   </button>
                 ))}
               </div>
               <input
                 type="text"
-                placeholder="Other Country"
+                placeholder="Other occupation"
                 className="input-field"
-                value={formData.country}
+                value={formData.occupation}
                 onChange={handleChange}
-                name="country"
+                name="occupation"
               />
               <button className="full-btn" onClick={handleNext}>Next</button>
             </div>
@@ -111,25 +136,25 @@ const HelpCommunity = () => {
 
           {step === 2 && (
             <div>
-              <h1 className="left-heading">Select Qualification</h1>
+              <h1 className="left-heading">Your education</h1>
               <div className="button-grid">
-                {['12 Pass', 'Graduate', 'Master', 'PhD'].map((qualification) => (
+                {['Masters', 'Graduate', 'PhD', 'Others'].map((edu) => (
                   <button
-                    key={qualification}
-                    className={`square-btn ${formData.qualification === qualification ? 'active' : ''}`}
-                    onClick={() => setFormData({ ...formData, qualification })}
+                    key={edu}
+                    className={`square-btn ${formData.education === edu ? 'active' : ''}`}
+                    onClick={() => setFormData({ ...formData, education: edu })}
                   >
-                    {qualification}
+                    {edu}
                   </button>
                 ))}
               </div>
               <input
                 type="text"
-                placeholder="Other Qualification"
+                placeholder="Other education"
                 className="input-field"
-                value={formData.qualification}
+                value={formData.education}
                 onChange={handleChange}
-                name="qualification"
+                name="education"
               />
               <button className="full-btn" onClick={handleNext}>Next</button>
             </div>
@@ -155,106 +180,60 @@ const HelpCommunity = () => {
 
           {step === 4 && (
             <div>
-              <h1 className="left-heading">Select Job Title</h1>
-              <div className="button-grid">
-                {['Business Development Manager', 'Software Engineer', 'Senior Software Engineer', 
-                  'Administrative Assistant', 'Business Analyst', 'Operations'].map((title) => (
-                  <button
-                    key={title}
-                    className={`square-btn ${formData.jobTitle === title ? 'active' : ''}`}
-                    onClick={() => setFormData({ ...formData, jobTitle: title })}
-                  >
-                    {title}
-                  </button>
-                ))}
-              </div>
-              <input
-                type="text"
-                placeholder="Other Job Title"
-                className="input-field"
-                value={formData.jobTitle}
-                onChange={handleChange}
-                name="jobTitle"
-              />
-              <button className="full-btn" onClick={handleNext}>Next</button>
-            </div>
-          )}
-
-          {step === 5 && (
-            <div>
-              <h1 className="left-heading">Personal Details</h1>
+              <h1 className="left-heading">You may be qualified for a job please contact us.</h1>
               <div className="form-group">
                 <label htmlFor="name">Name:</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  placeholder="Enter your name" 
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Enter your name"
                   value={formData.name}
                   onChange={handleChange}
                   name="name"
                   className="input-field"
                 />
+                {formErrors.name && <p className="error-message">{formErrors.name}</p>}
               </div>
 
               <div className="form-group">
                 <label htmlFor="email">Email:</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  placeholder="Enter your email" 
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Enter your email"
                   value={formData.email}
                   onChange={handleChange}
                   name="email"
                   className="input-field"
                 />
+                {formErrors.email && <p className="error-message">{formErrors.email}</p>}
               </div>
 
               <div className="form-group">
                 <label htmlFor="phone">Phone:</label>
-                <input 
-                  type="number" 
-                  id="phone" 
-                  placeholder="Enter your phone" 
+                <input
+                  type="number"
+                  id="phone"
+                  placeholder="Enter your phone number"
                   value={formData.phone}
                   onChange={handleChange}
                   name="phone"
                   className="input-field"
                 />
+                {formErrors.phone && <p className="error-message">{formErrors.phone}</p>}
               </div>
 
-              <div className="checkbox-group">
-                <input
-                  type="checkbox"
-                  id="whatsapp"
-                  checked={formData.whatsapp}
-                  onChange={handleCheckboxChange}
-                  name="whatsapp"
-                />
-                <label htmlFor="whatsapp">Use this number for WhatsApp</label>
-              </div>
-
-              <div className="checkbox-group">
-                <input
-                  type="checkbox"
-                  id="terms"
-                  checked={formData.termsAccepted}
-                  onChange={handleCheckboxChange}
-                  name="termsAccepted"
-                />
-                <label htmlFor="terms">I accept the terms and conditions</label>
-              </div>
-
-              <button type="button" className="submit-btn" onClick={handleSubmit}>
+              <button type="button" className="full-btn" onClick={handleSubmit}>
                 Submit
               </button>
             </div>
           )}
 
-          {step === 6 && (
+          {step === 5 && (
             <div>
               <h1 className="left-heading">Congratulations!</h1>
-              <p>You are eligible for our program</p>
-              <button className="submit-btn" onClick={() => setShowPopup(true)}>
+              <p>You may be qualified for a job; please contact us.</p>
+              <button className="full-btn" onClick={() => setShowPopup(true)}>
                 Learn More
               </button>
             </div>
@@ -290,21 +269,19 @@ const HelpCommunity = () => {
       {showPopup && (
         <div className="popup-overlay">
           <div className="popup-content">
-            <button 
-              className="close-btn" 
+            <button
+              className="close-btn"
               onClick={() => setShowPopup(false)}
             >
               ×
             </button>
             <h2>Your Details</h2>
-            <p><strong>Country:</strong> {formData.country}</p>
-            <p><strong>Qualification:</strong> {formData.qualification}</p>
+            <p><strong>Occupation:</strong> {formData.occupation}</p>
+            <p><strong>Education:</strong> {formData.education}</p>
             <p><strong>Experience:</strong> {formData.experience}</p>
-            <p><strong>Job Title:</strong> {formData.jobTitle}</p>
             <p><strong>Name:</strong> {formData.name}</p>
             <p><strong>Email:</strong> {formData.email}</p>
             <p><strong>Phone:</strong> {formData.phone}</p>
-            {formData.whatsapp && <p><strong>WhatsApp:</strong> {formData.phone}</p>}
           </div>
         </div>
       )}

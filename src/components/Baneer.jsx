@@ -8,16 +8,15 @@ const BannerSection = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
   return (
     <div className="banner-container">
       <div className="banner-left">
-        <img src='Untitled design (3).png' className='bannerimg' alt="Banner Image" />
+        <img src='banner.svg' className='bannerimg' alt="Banner Image" />
       </div>
       <div className="banner-right">
-        <button className="category-btn" onClick={() => scrollToSection('tech')}>Tech/ARTS</button>
-        <button className="category-btn" onClick={() => scrollToSection('mbbs')}>MBBS</button>
-        <button className="category-btn" onClick={() => scrollToSection('study')}>Study</button>
+        <button className="category-btn" onClick={() => scrollToSection('tech')}> STUDY Tech</button>
+        <button className="category-btn" onClick={() => scrollToSection('mbbs')}>STUDY MBBS</button>
+        <button className="category-btn" onClick={() => scrollToSection('study')}>STUDY ARTS</button>
         <button className="category-btn" onClick={() => scrollToSection('language')}>Language</button>
         <button className="category-btn" onClick={() => scrollToSection('invest')}>Invest</button>
         <button className="category-btn" onClick={() => scrollToSection('work')}>Work</button>

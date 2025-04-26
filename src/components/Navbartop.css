@@ -8,7 +8,13 @@
     box-sizing: border-box;
     font-family: sans-serif;
     scale: 98%;
-    margin-left: 0.7%;
+    margin-top: 20px;
+
+  }
+  .mobile-contact{
+   color: rgb(134, 134, 134);
+    margin-left: auto;
+    width: 50%;
   }
 
   .logo-section {
@@ -30,17 +36,19 @@
 
   .contact-nav {
     display: flex;
-   
+    margin-left: auto;
     width: 100%;
     padding: 3px;
     height: auto;
     gap: 15px;
     margin-top: 1%;
+    color:  rgb(60, 59, 59);
+    
   }
  .coloumintop{
   display: flex;
   flex-direction: column;
-
+  margin-left: auto;
   width: 75%;
  }
   .contact-info {
@@ -53,12 +61,12 @@
     margin-left: 2%;
   
   }
-  .contact-info li .icon {
-  
-  padding-top: 3%;
-  
-  
-  }
+  .icon{
+    margin-right: 12px;
+   
+    position: relative;top: 3px;
+
+ }
 
   .nav-links {
     display: flex;
@@ -89,7 +97,7 @@
   }
 
   .nav-links li:hover {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(236, 236, 236);
     cursor: pointer;
   }
 
@@ -244,6 +252,24 @@
   }
 
   .nav-links li:hover::after {
-    width: 0; /* disable hover underline on mobile */
+    width: 0; 
+  }
+  .contact-info{
+  
+    scale: 80%;
+    width: 200%;
+    margin: 0;
+    gap: 1rem;
+
+  }
+  .contact-info li{
+   
+  }
+  .mobile-contact{
+    width: 130%;
+   
+  }
+  .navbartop{
+    gap: 0.2rem;
   }
 }

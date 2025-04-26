@@ -29,7 +29,7 @@ export const mbdata = [
       "English medium of instruction",
       "Affordable living cost",
       "1-Year BS + 4-Year MD Program",
-      "Top Universities: University of Dili"
+      "Top Universities: University of Peace "
     ]
   },
   {
