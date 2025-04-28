@@ -16,7 +16,7 @@ const Navbartop = () => {
     if (activeCategory) {
       handleHoverEffect(activeCategory, true);
       return () => handleHoverEffect(activeCategory, false);
-    }
+    }   
   }, [activeCategory]);
 
   const handleClickScroll = (category) => {
@@ -34,9 +34,9 @@ const Navbartop = () => {
       </div>
       
       <div className="coloumintop">
-        <div className='mobile-contact'>
+        
           <ul className='contact-info'>
-            <li>
+            <li className='contfirst'>
               <FaPhone className="icon" size={18} />
               <span>+91 90036 19777</span>
             </li>
@@ -49,7 +49,7 @@ const Navbartop = () => {
               <span>Study@payana.com</span>
             </li>
           </ul>
-        </div>
+        
 
         
 

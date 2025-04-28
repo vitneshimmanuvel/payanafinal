@@ -3,12 +3,12 @@ import './invest.css';
 
 const Invest = () => {
   const [submissions, setSubmissions] = useState({
-    canada: { submitted: false, valid: false },
-    us: { submitted: false, valid: false },
-    netherlands: { submitted: false, valid: false }
+    canada: { submitted: false, valid: false, loading: false },
+    us: { submitted: false, valid: false, loading: false },
+    netherlands: { submitted: false, valid: false, loading: false }
   });
 
-  const handleSubmit = (e, country) => {
+  const handleSubmit = async (e, country) => {
     e.preventDefault();
     const name = e.target.querySelector('input[type="text"]').value;
     const email = e.target.querySelector('input[type="email"]').value;
@@ -18,10 +18,41 @@ const Invest = () => {
         ...prev,
         [country]: { ...prev[country], valid: false }
       }));
-    } else {
+      return;
+    }
+
+    setSubmissions(prev => ({
+      ...prev,
+      [country]: { ...prev[country], loading: true }
+    }));
+
+    try {
+      const response = await fetch('https://web-production-d0790f.up.railway.app/submit-invest-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, country }),
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        setSubmissions(prev => ({
+          ...prev,
+          [country]: { ...prev[country], submitted: true, valid: true, loading: false }
+        }));
+      } else {
+        setSubmissions(prev => ({
+          ...prev,
+          [country]: { ...prev[country], valid: false, loading: false }
+        }));
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
       setSubmissions(prev => ({
         ...prev,
-        [country]: { ...prev[country], submitted: true, valid: true }
+        [country]: { ...prev[country], valid: false, loading: false }
       }));
     }
   };
@@ -53,17 +84,23 @@ const Invest = () => {
                         placeholder="Your Name"
                         required
                         style={{ borderRadius: '12px' }}
+                        disabled={submissions[country.id].loading}
                       />
                       <input 
                         type="email" 
                         placeholder="Your Email"
                         required
                         style={{ borderRadius: '12px' }}
+                        disabled={submissions[country.id].loading}
                       />
                       <button 
+                      className='submi1'
                         type="submit"
                         style={{ borderRadius: '12px' }}
-                      >Submit</button>
+                        disabled={submissions[country.id].loading}
+                      >
+                        {submissions[country.id].loading ? 'Submitting...' : 'Submit'}
+                      </button>
                     </>
                   )}
                 </form>

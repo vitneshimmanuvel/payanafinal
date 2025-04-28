@@ -1,4 +1,4 @@
-// MBBSInfo.js
+
 import React from 'react';
 import { mbdata } from './mbdata.js';
 import './MBBSInfo.css';

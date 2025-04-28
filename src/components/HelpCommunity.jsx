@@ -22,12 +22,12 @@ const HelpCommunity = () => {
   });
   const [formErrors, setFormErrors] = useState({});
   const [showPopup, setShowPopup] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Automatic banner slideshow
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentBanner((prev) => (prev + 1) % bannerImages.length);
-    }, 3000); // Change every 3 seconds
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -66,10 +66,34 @@ const HelpCommunity = () => {
     return isValid;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const isValid = validateForm();
-    if (isValid) {
-      setStep(5);
+    if (!isValid) return;
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://web-production-d0790f.up.railway.app/submit-work-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      if (data.success) {
+        setStep(5);
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('Failed to submit form. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -82,7 +106,6 @@ const HelpCommunity = () => {
 
   return (
     <div className="help-community-container">
-      {/* Banner Slideshow */}
       <div className="banner-slideshow">
         {bannerImages.map((image, index) => (
           <div
@@ -105,14 +128,13 @@ const HelpCommunity = () => {
       </div>
 
       <div className="content-container">
-        {/* Left Panel - Multi-step Form */}
         <div className="left-panel">
           <h1 className='worky'>WORK PROFILE ASSESSMENT</h1>
           {step === 1 && (
             <div>
               <h1 className="left-heading">Your occupation</h1>
               <div className="button-grid">
-                {['IT', 'Skilled Worker', 'Medicine', 'Administration', 'Others'].map((occ) => (
+                {['IT', 'Skilled Worker', 'Medicine', 'Administration'].map((occ) => (
                   <button
                     key={occ}
                     className={`square-btn ${formData.occupation === occ ? 'active' : ''}`}
@@ -138,7 +160,7 @@ const HelpCommunity = () => {
             <div>
               <h1 className="left-heading">Your education</h1>
               <div className="button-grid">
-                {['Masters', 'Graduate', 'PhD', 'Others'].map((edu) => (
+                {['Masters', 'Graduate', 'PhD'].map((edu) => (
                   <button
                     key={edu}
                     className={`square-btn ${formData.education === edu ? 'active' : ''}`}
@@ -182,7 +204,7 @@ const HelpCommunity = () => {
             <div>
               <h1 className="left-heading">You may be qualified for a job please contact us.</h1>
               <div className="form-group">
-                <label htmlFor="name">Name:</label>
+                
                 <input
                   type="text"
                   id="name"
@@ -196,7 +218,7 @@ const HelpCommunity = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="email">Email:</label>
+                
                 <input
                   type="email"
                   id="email"
@@ -210,7 +232,7 @@ const HelpCommunity = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="phone">Phone:</label>
+               
                 <input
                   type="number"
                   id="phone"
@@ -223,8 +245,13 @@ const HelpCommunity = () => {
                 {formErrors.phone && <p className="error-message">{formErrors.phone}</p>}
               </div>
 
-              <button type="button" className="full-btn" onClick={handleSubmit}>
-                Submit
+              <button
+                type="button"
+                className="full-btn"
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Submitting...' : 'Submit'}
               </button>
             </div>
           )}
@@ -240,7 +267,6 @@ const HelpCommunity = () => {
           )}
         </div>
 
-        {/* Right Panel - Community Info */}
         <div className="right-panel">
           <h2 className="right-heading">Join Our Community</h2>
           <p className="subtext">
@@ -265,16 +291,10 @@ const HelpCommunity = () => {
           </div>
         </div>
       </div>
-
       {showPopup && (
         <div className="popup-overlay">
           <div className="popup-content">
-            <button
-              className="close-btn"
-              onClick={() => setShowPopup(false)}
-            >
-              ×
-            </button>
+            
             <h2>Your Details</h2>
             <p><strong>Occupation:</strong> {formData.occupation}</p>
             <p><strong>Education:</strong> {formData.education}</p>
@@ -282,7 +302,14 @@ const HelpCommunity = () => {
             <p><strong>Name:</strong> {formData.name}</p>
             <p><strong>Email:</strong> {formData.email}</p>
             <p><strong>Phone:</strong> {formData.phone}</p>
+            <button
+              className="close-btn"
+              onClick={() => setShowPopup(false)}
+            >
+              close
+            </button>
           </div>
+
         </div>
       )}
     </div>

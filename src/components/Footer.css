@@ -95,18 +95,73 @@
     position: relative;
   }
 
+  /* Social icons positioned at bottom of footer content */
   .social-icons {
-    position: fixed; /* Stick to bottom of screen */
+    position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
+    right: 0;
+    display: flex;
     justify-content: center;
-    background-color: #1f1f1f;
-    padding: 0.8rem 0;
-    z-index: 999;
+    padding: 1rem 0;
+    margin-top: 4rem;
+    gap: 3  rem;
   }
 
   .footer-right {
-    margin-bottom: 3rem; /* Give space above the fixed icons */
+    margin-bottom: 4rem; /* Space for social icons */
+  }
+
+  .map-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  /* Mobile-friendly section styling */
+  .footer-section {
+    min-width: 100%;
+    width: 100%;
+  }
+
+  .footer-section h3 {
+    padding: 10px 0;
+    font-size: 1.1rem;
+  }
+
+  .footer-section p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    gap: 0.5rem;
+  }
+
+  /* Social icons优化 */
+  .social-icons a {
+    font-size: 1.4rem;
+    padding: 0.5rem;
+    
+  }
+
+  /* Improve touch targets */
+  .footer-section .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .map-image {
+    max-width: 250px;
+  }
+
+  .footer-section h3 {
+    font-size: 1rem;
+    padding: 8px 0;
+  }
+
+  .social-icons a {
+    font-size: 1.2rem;
+    
   }
 }

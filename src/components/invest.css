@@ -14,13 +14,20 @@
   text-align: start;
   padding: 1rem;
 }
-
+.submi1{
+  background-color: rgb(255, 106, 0);
+  border: none;
+  font-weight: 600;
+  color: #fff;
+  font-size: 1rem;
+}
 .invest-flags {
   display: flex;
   justify-content: space-around;
   gap: 1rem;
   width: 100%;
   height: 50%;
+  margin-top: 5%;
 }
 
 .flag-container {

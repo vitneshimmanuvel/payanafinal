@@ -21,6 +21,7 @@ const StudyOptions = () => {
         email: '',
         phone: ''
     });
+    const [isSubmitting, setIsSubmitting] = useState(false); // Added state for submission status
 
     const handleNext = () => {
         if (step === 1 && selectedCountry) setStep(2);
@@ -36,21 +37,18 @@ const StudyOptions = () => {
         const newErrors = { name: '', email: '', phone: '' };
         let isValid = true;
 
-        // Name validation
         if (!formData.name.trim()) {
             newErrors.name = 'Name is required';
             isValid = false;
         }
 
-        // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formData.email)) {
             newErrors.email = 'Valid email is required';
             isValid = false;
         }
 
-        // Phone validation
-        if (!Number(formData.phone) || formData.phone.length < 5) {
+        if (!Number(formData.phone) || formData.phone.length < 10) {
             newErrors.phone = 'Valid phone number is required';
             isValid = false;
         }
@@ -59,30 +57,39 @@ const StudyOptions = () => {
         return isValid;
     };
 
-    const handleSubmit = async () => {
+    const handleSubmit = () => {
         if (!validateForm()) return;
 
-        try {
-            await fetch('http://localhost:5000/api/study-options', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    selectedCountry,
-                    selectedQualification,
-                    selectedAge,
-                    selectedEducationTopic,
-                    currentCgpa,
-                    selectedBudget,
-                    needsLoan,
-                    formData
-                }),
-            });
+        setIsSubmitting(true); // Set submitting state to true
+
+        const formDataToSend = {
+            selectedCountry,
+            selectedQualification,
+            selectedAge,
+            selectedEducationTopic,
+            currentCgpa,
+            selectedBudget,
+            needsLoan,
+            ...formData
+        };
+
+        fetch('https://web-production-d0790f.up.railway.app/submit-form', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formDataToSend),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+            setIsSubmitting(false); // Reset submitting state
             setStep(9); // Move to congratulations step
-        } catch (error) {
-            console.error('Error submitting form:', error);
-        }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            setIsSubmitting(false); // Reset submitting state
+        });
     };
 
     return (
@@ -93,8 +100,8 @@ const StudyOptions = () => {
                 </div>
 
                 <div className="study-content">
-                    <div className="mobile-only-text ">STUDY TECHNOLOGY/ARTS SELECT COUNTRY </div>
-                    
+                    <div className="mobile-only-text">STUDY TECHNOLOGY/ARTS SELECT COUNTRY</div>
+
                     {step === 1 && (
                         <>
                             <h1>Select Country</h1>
@@ -124,7 +131,7 @@ const StudyOptions = () => {
                         <>
                             <h1>Select Your Next Education</h1>
                             <div className="button-grid">
-                                {['12 ', 'Graduate', 'Master', 'PhD'].map((qualification) => (
+                                {['12', 'Graduate', 'Master', 'PhD'].map((qualification) => (
                                     <button
                                         key={qualification}
                                         className={`square-btn ${selectedQualification === qualification ? 'active' : ''}`}
@@ -183,13 +190,19 @@ const StudyOptions = () => {
 
                     {step === 5 && (
                         <>
-                            <h1>Enter Current CGPA/Percentage</h1>
+                            <h1>Enter Current Percentage</h1>
                             <input
-                                type="number"
+                                type="text"
                                 className="input-field"
                                 placeholder="e.g. 85"
                                 value={currentCgpa}
-                                onChange={(e) => setCurrentCgpa(e.target.value)}
+                                onChange={(e) => {
+                                    const value = e.target.value;
+                                    if (/^\d{0,2}$/.test(value)) {
+                                        setCurrentCgpa(value);
+                                    }
+                                }}
+                                maxLength={2}
                             />
                             <button className="full-btn" onClick={handleNext}>Next</button>
                         </>
@@ -253,24 +266,38 @@ const StudyOptions = () => {
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             />
                             
-                            {errors.phone && <div className="error-message">{errors.phone}</div>}
+                            {errors.phone && <p className="error-message">{errors.phone}</p>}
                             <input
                                 className="input-field"
                                 type="number"
-                                placeholder="Phone (Will be used for WhatsApp)"
+                                placeholder="Phone number"
                                 value={formData.phone}
                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                             />
                             
-                            <button className="full-btn" onClick={handleSubmit}>Submit</button>
+                            <button 
+                                className="full-btn" 
+                                onClick={handleSubmit}
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? 'Submitting...' : 'Submit'}
+                            </button>
                         </>
                     )}
 
                     {step === 9 && (
                         <>
                             <h1>Congratulations!</h1>
-                            <p>You are eligible for our program</p>
-                            <button className="full-btn" onClick={() => setShowPopup(true)}>Learn More</button>
+                            <p>You are eligible for our program.</p>
+                            <button className="full-btn" onClick={() => setShowPopup(true)}>See Details</button>
+                        </>
+                    )}
+
+                    {step === 10 && (
+                        <>
+                            <h1>🎉 Congratulations Again! 🎉</h1>
+                            <p>We are excited to have you with us. We will contact you soon!</p>
+                            <button className="full-btn" onClick={() => setStep(1)}>Start Again</button>
                         </>
                     )}
                 </div>
@@ -279,13 +306,7 @@ const StudyOptions = () => {
             {showPopup && (
                 <div className="popup-overlay">
                     <div className="popup-content">
-                        <button 
-                            className="close-btn" 
-                            onClick={() => setShowPopup(false)}
-                            style={{ position: 'absolute', top: '10px', right: '10px', background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer' }}
-                        >
-                            ×
-                        </button>
+                        
                         <h2>Your Details</h2>
                         <p><strong>Country:</strong> {selectedCountry}</p>
                         <p><strong>Qualification:</strong> {selectedQualification}</p>
@@ -297,6 +318,16 @@ const StudyOptions = () => {
                         <p><strong>Name:</strong> {formData.name}</p>
                         <p><strong>Email:</strong> {formData.email}</p>
                         <p><strong>WhatsApp/Phone:</strong> {formData.phone}</p>
+                        <button 
+                            className="close-btn" 
+                            onClick={() => {
+                                setShowPopup(false);
+                                setStep(10);
+                            }}
+                            style={{ position: 'absolute', top: '10px', right: '10px', background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer' }}
+                        >
+                         Close   
+                        </button>
                     </div>
                 </div>
             )}
