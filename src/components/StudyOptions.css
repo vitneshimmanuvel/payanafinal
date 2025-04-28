@@ -7,6 +7,9 @@
         width: 100%;
         scale: 97%;
     }
+    .close-btn{
+        background-color: #ffa305;
+    }
 
     .study-options {
         display: flex;

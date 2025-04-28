@@ -324,7 +324,7 @@ const StudyOptions = () => {
                                 setShowPopup(false);
                                 setStep(10);
                             }}
-                            style={{ position: 'absolute', top: '10px', right: '10px', background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer' }}
+                            style={{ top: '10px', right: '10px', border: 'none', fontSize: '20px', cursor: 'pointer' }}
                         >
                          Close   
                         </button>

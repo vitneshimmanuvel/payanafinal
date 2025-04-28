@@ -46,7 +46,7 @@ const Navbartop = () => {
             </li>
             <li>
               <FaEnvelope className="icon" size={20} />
-              <span>Study@payana.com</span>
+              <span>Study@payanaoverseas.com</span>
             </li>
           </ul>
         
