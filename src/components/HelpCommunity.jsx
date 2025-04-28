@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './HelpCommunity.css';
 import { FaWhatsapp, FaInstagram, FaFacebookF, FaXTwitter } from 'react-icons/fa6';
+import { FaYoutube } from 'react-icons/fa';
 
 const bannerImages = [
   "ChatGPT Image Apr 17, 2025, 02_59_38 PM.png",
@@ -279,15 +280,19 @@ const HelpCommunity = () => {
           </button>
 
           <div className="social-iconss">
-            <a href="#" className="social-icon instagram">
+            <a href="https://www.instagram.com/payanaoverseassolutions/" className="social-icon instagram">
               <FaInstagram size={20} />
             </a>
             <a href="#" className="social-icon facebook">
               <FaFacebookF size={20} />
             </a>
-            <a href="#" className="social-icon twitter">
+            <a href="https://x.com/PayanaOverseas" className="social-icon twitter">
               <FaXTwitter size={20} />
             </a>
+            <a href="https://www.youtube.com/channel/UCwhgSMTSMig0sbgN_0mbyHg" className="social-icon twitter">
+              <FaYoutube size={20} />
+            </a>
+
           </div>
         </div>
       </div>

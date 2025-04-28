@@ -7,6 +7,7 @@ import {
   FaInstagram,
   FaXTwitter,
 } from "react-icons/fa6";
+import { FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   const openMap = () => {
@@ -62,10 +63,14 @@ const Footer = () => {
           <a href="https://facebook.com" target="_blank" rel="noreferrer">
             <FaFacebook />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer">
+          <a href="https://www.instagram.com/payanaoverseassolutions/" target="_blank" rel="noreferrer">
             <FaInstagram />
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noreferrer">
+          <a href="https://www.youtube.com/channel/UCwhgSMTSMig0sbgN_0mbyHg" target="_blank" rel="noreferrer">
+          <FaYoutube />
+          </a>
+          <a href="https://x.com/PayanaOverseas" target="_blank" rel="noreferrer">
+            
             <FaXTwitter />
           </a>
         </div>
