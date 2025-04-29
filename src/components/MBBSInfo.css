@@ -175,11 +175,14 @@
     text-align: center;
   }
   .mbbs-text p {
-   
     text-align: center;
   }
-
+  .mbbs-card-back{
+    font-size: 10px;
+  }
+  
   .mbbs-cards {
-    grid-template-columns:  1fr; 
+    grid-template-columns: repeat(2, 1fr);
+    scale: 98%;
   }
 }

@@ -65,10 +65,9 @@
         <section className="testimonial-section">
           <div className="text-content">
             <h2><span>Client</span> Testimonials</h2>
-            <p>Hear success stories from our global Client.</p>
+            <p>Our Success Stories</p>
           </div>
           <div className="testimonial-row">
-            {/* First Video Card */}
             <div
               className="video-card"
               data-name="Manju"

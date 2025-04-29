@@ -20,7 +20,7 @@ const NewsGPT = () => {
               <p className="news-description">
                 Recent studies show that international families face unique educational hurdles, including curriculum differences, language barriers, and cultural adaptation for children.
               </p>
-              <p className="news-descriptionl ">
+              <p className="news-description ">
                 Experts recommend early planning and research when considering education abroad, with particular attention to accreditation, recognition, and future education pathways.
               </p>
               <span className="news-tag">Canada</span>
@@ -39,10 +39,10 @@ const NewsGPT = () => {
               <p className="news-description">
                 The trend reflects growing interest in European education systems that offer practical training, research opportunities, and favorable post-study work permits.
               </p>
-              <p className="news-descriptionl">
+              <p className="news-description">
                 Courses in artificial intelligence, data science, and cybersecurity are particularly popular, with many programs offering direct industry connections and internship opportunities.
               </p>
-              <span className="news-tag">Germany</span>
+              <p className="news-tag">Germany</p>
             </div>
           </div>
         </div>
@@ -52,13 +52,15 @@ const NewsGPT = () => {
         <div className="about-payana">
           
           <div className="payanatop">
-          <h1>Why PayanaOverseas</h1>
+          <h1>Why Payana Overseas?</h1>
           </div>
+
+         
           <div className="responsehold1">
             <div className="holeone">
             <div className="stats-container">
           <div className="stat-item">20+ COUNTRIES</div>
-          <div className="stat-item">700+ UNIVERSITYS</div>
+          <div className="stat-item">700+ UNIVERSITIES</div>
         </div>
         
         <ul className="features-list">
@@ -109,8 +111,8 @@ const NewsGPT = () => {
             <div className="holetwo" >
                 <img src='realwatwe.svg'></img>
             </div>
-          </div>
-            <div className="responsehold">
+          </div> 
+             <div className="responsehold">
               <div className="responsedivide reddy">
                 <h2>Mission</h2>
               <p className="about-paragraph">
@@ -123,7 +125,7 @@ const NewsGPT = () => {
               To make sure overseas education and overseas work options are highly reachable and affordable to every qualified individual irrespective of their financial status.
               </p>
               </div>
-          </div>
+          </div> 
         </div>
       </div>
     </section>

@@ -31,30 +31,25 @@
   position: relative;
   left: 15%;
 }
-
 .gptsecond {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
+  height: auto;
   flex-direction: row;
   justify-content: start;
-  gap: 4%;
+  gap: 3%;
+ 
 }
-
-.circleavatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: 15px;
+.gptsecond h2{
+  font-size: 2.7rem;
 }
-
-.circleavatar img {
-  width: 100%;
-  height: 100%;
+.ritzaimg{
+  width: 30%;
+  height: 30%;
   object-fit: cover;
+  border-radius: 50%;
+  border: #3a3a3a 3px solid;
 }
 
 .ask-area-container {
@@ -134,10 +129,7 @@
     margin-top: 1rem;
   }
 
-  .circleavatar {
-    width: 100px;
-    height: 100px;
-  }
+  
 
   .gpt h1 {
     font-size: 1.5rem;
@@ -164,9 +156,9 @@
 
 .visa-threed {
   position: relative;
-  top: -5%; /* Positions cards 5% below the text */
+  top: 9%; /* Positions cards 5% below the text */
   padding: 1%;
-  height: 100%;
+  height: 120%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3%;
@@ -289,6 +281,17 @@
     height: auto;
     padding: 1rem;
   }
+  .gptsecond{
+     margin: 0;
+     justify-content: start;
+     display: flex;
+     position: none;
+     margin-top:0;
+     height: 200px;
+  }
+  .circleavatar{
+  
+  }
 
   .gpt h1 {
     display: none;
@@ -301,12 +304,14 @@
 
   .gptsecond {
     justify-content: center;
-    margin: 1rem 0;
+    margin-top: 0;
+    width: 100%;
+    justify-content: start;
   }
 
   .ask-area-container {
-    height: auto;
-    max-height: 300px;
+    
+    max-height: 400px;
     overflow-y: auto;
   }
 
@@ -325,7 +330,7 @@
    padding: 0;
   }
   .ask-area-container{
-    height: 30vh;
+    height: 35vh;
   }
 }
 

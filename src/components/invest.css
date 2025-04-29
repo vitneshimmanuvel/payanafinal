@@ -126,11 +126,14 @@ input:invalid {
     width: 90vw;
     height: 95vh;
   }
+  .card-back{
+    scale: 95%;
+  }
 
   .flag-container{
     width: 100%;
     
-  
+    
   }
  
 }

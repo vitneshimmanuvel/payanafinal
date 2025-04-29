@@ -9,7 +9,6 @@ const Techarts = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!userMessage.trim()) return;
-    // Clear input after submission
     setUserMessage('');
   };
   return (
@@ -40,7 +39,7 @@ const Techarts = () => {
       <div className='gpt'>
         <h1>Fell free to ask questions to our Ritza</h1>
         <div className="gptsecond">
-          <div className="circleavatar"><img src="/jack.jpeg" alt="" /></div>
+          <img className='ritzaimg' src="/jack.jpeg" alt="" />
           <h2>Ritza</h2>
         </div>
 
@@ -67,6 +66,6 @@ const Techarts = () => {
       </div>
     </div>
   );
-};
+};  
 
 export default Techarts;

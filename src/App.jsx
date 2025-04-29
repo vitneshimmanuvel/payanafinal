@@ -16,19 +16,14 @@ function App() {
   return (
     <div className='total'>
       <Navbartop />
-
       <BannerSection />
-
       <div id='tech'>
         <Techarts />
       </div>
-
       <div id='mbbs'>
         <MBBSInfo />
       </div>
-
       <div id='study'>
-        {/* <DentalProgram /> */}
         <StudyOptions/>
       </div>
 
