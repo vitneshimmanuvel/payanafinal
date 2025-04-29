@@ -37,7 +37,7 @@ const Techarts = () => {
         </div>
       </div>
       <div className='gpt'>
-        <h1>Fell free to ask questions to our Ritza</h1>
+        <h1>Feel free to ask questions to our Ritza</h1>
         <div className="gptsecond">
           <img className='ritzaimg' src="/jack.jpeg" alt="" />
           <h2>Ritza</h2>

@@ -50,7 +50,7 @@ const Navbartop = () => {
           </ul>
         <div className={`contact-nav ${isMobileMenuOpen ? 'show' : ''}`}>
           <ul className='nav-links'>
-            {['study',  'mbbs','study', 'language', 'invest', 'work'].map((category, index) => (
+            {['study', 'mbbs','study', 'language', 'invest', 'work'].map((category, index) => (
               <li
                 key={category}
                 data-category={category}

@@ -313,18 +313,18 @@
     font-size: 2rem;
     margin-top: 4rem;
   }
-
   .ask-area-container {
     
     max-height: 400px;
     overflow-y: auto;
   }
-
   .gptform {
     flex-direction: row;
     gap: 1%;
   }
-
+  .gpt{
+    border-top: 1px solid #545151;
+  }
   .gptform input {
     border-radius: 10px;
     width: 50%;

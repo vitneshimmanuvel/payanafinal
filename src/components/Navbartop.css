@@ -129,7 +129,7 @@ width: 75%;
 .nav-links li.nav-active {
   animation: nav-pulse 1.5s infinite;
 }
-/* ----- Mobile Responsive Styles ----- */
+
 @media (max-width: 768px) {
   .navbartop {
     flex-direction: column;
@@ -188,21 +188,21 @@ width: 75%;
   }
 
   .nav-links li:hover::after {
-    width: 0; /* disable hover underline on mobile */
+    width: 0; 
   }
 }
 
 .burger-menu {
   display: none;
 }
-/* Existing styles remain the same */
+
 
 .burger-menu {
 display: none;
 cursor: pointer;
 }
 
-/* ----- Mobile Responsive Styles ----- */
+
 @media (max-width: 768px) {
 .navbartop {
   flex-direction: row;
@@ -210,73 +210,35 @@ cursor: pointer;
   height: auto;
   align-items: center;
 }
-
-
 .contact-info {
   display: flex;
-  flex-direction: row; /* KEEP them in a row */
-  justify-content: space-between; /* Center them */
+  flex-direction: row; 
+  justify-content: space-between; 
   align-items: center;
-  width: 100%;
-  gap: 0.5rem;
-  font-size: 0.75rem;
-  margin-left: 1rem;
-  padding: 0;
-  scale: 100%; /* Don't shrink too much */
+  width: 85%;
+  scale: 110%;
+  font-size: 0.39rem;
+  margin-left: auto;
+  gap: 2px;
 }
-.contact-info li {
 
-  font-size: 0.3rem;
-  white-space: nowrap; /* Prevent cutting half numbers/text */
+.icon{
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  margin-bottom: 1px;
+  margin-right: 2px;
 }
 .icon{
-  width: 10px;
-  height: 10px;
-  padding: 0;
-  margin-right: 1px;
+  margin-left: 0;
 }
-
-
-
-
-
-
-
-/* 
-.nav-links li {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  text-align: left;
-  background-color: #f2f2f2;
-  border-radius: 5px;
-  margin-bottom: 0.5rem;
-} */
-
-
-/* .contact-info{
-  
-  scale: 80%;
-  width: 100%;
-  margin-left: 18%;
-  gap: 0.4rem;
-  font-size: small;
-  flex-direction: column;
-
-} */
 .logo-section{
   width: 30%;
   padding: 0;
   align-self: flex-end;
 
 }
-/* .contact-info li{
- scale: 60%;
- font-size: 17px;
 
- flex-wrap: wrap;
- 
-
-} */
 .contfirst{
   margin-left: 0;
 }
