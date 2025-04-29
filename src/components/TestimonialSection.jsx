@@ -47,15 +47,15 @@
         }
       };
 
-      // Prevent spacebar and 'k' key from controlling video playback
+        
     
 
 
-      // Ensure all videos are preloaded when the component mounts
+      
       useEffect(() => {
         [iframeRef1, iframeRef2, iframeRef3, iframeRef4].forEach((ref) => {
           if (ref.current) {
-            // Create player instances for preloading
+           
             new Player(ref.current);
           }
         });
@@ -65,7 +65,7 @@
         <section className="testimonial-section">
           <div className="text-content">
             <h2><span>Client</span> Testimonials</h2>
-            <p>Hear success stories from our global partners.</p>
+            <p>Hear success stories from our global Client.</p>
           </div>
           <div className="testimonial-row">
             {/* First Video Card */}

@@ -33,5 +33,4 @@ const MBBSInfo = () => {
     </div>
   );
 };
-
 export default MBBSInfo;

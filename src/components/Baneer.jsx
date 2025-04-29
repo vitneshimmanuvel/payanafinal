@@ -14,7 +14,7 @@ const BannerSection = () => {
         <img src='banner.svg' className='bannerimg' alt="Banner Image" />
       </div>
       <div className="banner-right">
-        <button className="category-btn" onClick={() => scrollToSection('tech')}> STUDY Tech</button>
+        <button className="category-btn" onClick={() => scrollToSection('study')}> STUDY Tech</button>
         <button className="category-btn" onClick={() => scrollToSection('mbbs')}>STUDY MBBS</button>
         <button className="category-btn" onClick={() => scrollToSection('study')}>STUDY ARTS</button>
         <button className="category-btn" onClick={() => scrollToSection('language')}>Language</button>

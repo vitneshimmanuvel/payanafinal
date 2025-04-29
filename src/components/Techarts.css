@@ -253,20 +253,76 @@
 @media screen and (max-width: 768px) {
   .visatotal {
     flex-direction: column;
-    height: auto;
-    align-items: center;
+    height: auto !important;
   }
-
-  .visa-hero2text {
+  .visa-hero2, .gpt {
     width: 100%;
-    margin-bottom: 20px;
+    padding: 2rem 1rem;
   }
-
-  .visa-cardvisa-inner {
-    height: 180px;
+  .visa-hero2text {
+    position: static;
+    margin-bottom: 2rem;
   }
-
+  .visa-hero2text h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
   .visa-threed {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .visa-cardvisa {
+    perspective: 1000px;
+    height: 280px;
+  }
+  .visa-cardvisa-inner {
+    height: 100%;
+  }
+  .gpt h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  .gptsecond {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  .circleavatar {
+    margin: 1rem 0;
+  }
+  .gptform {
+    flex-direction: column;
+    width: 100%;
+  }
+  .gptform input {
+    margin-bottom: 1rem;
+  }
+  .gptform button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ask-area-container {
+    height: 300px;
+    overflow-y: auto;
+    margin-top: 1.5rem;
+  }
+  .message {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    border-left: 4px solid #545151;
+  }
+  .ai {
+    border-left-color: #545151;
+  }
+  .user {
+    border-left-color: #e6f4ff;
+    text-align: right;
   }
 }

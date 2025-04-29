@@ -66,6 +66,7 @@ const Techarts = () => {
 
         <div className="ask-area-container">
          <div className="message ai">Ask Ritza your questions!</div>
+                 
        </div>
       </div>
     </div>

@@ -238,10 +238,14 @@ input {
   .banner-slideshow {
     height: 250px;
   }
-}
-/* Existing CSS remains the same */
 
-/* Additional CSS for multi-step form */
+  .worky{
+    font-size: 1rem;
+    position: relative;
+    top: 0;
+  }
+}
+
 .button-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

@@ -9,14 +9,12 @@
   font-family: sans-serif;
   scale: 98%;
   margin-top: 20px;
-
 }
 .mobile-contact{
  color: rgb(134, 134, 134);
   margin-left: auto;
   width: 50%;
 }
-
 .logo-section {
   display: flex;
   align-items: center;
@@ -24,15 +22,11 @@
   scale: 160%;
   margin-left: 2%;
   margin-top: 2%;
-  
 }
-
-
 .logo-section img {
   width: 100%;
   height: 100%;
 }
-
 .contact-nav {
   display: flex;
   margin-left: auto;
@@ -217,30 +211,38 @@ cursor: pointer;
   align-items: center;
 }
 
+
+.contact-info {
+  display: flex;
+  flex-direction: row; /* KEEP them in a row */
+  flex-wrap: wrap; /* Allow wrapping if very necessary */
+  justify-content: center; /* Center them */
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  margin-left: 0;
+  padding: 0;
+  scale: 100%; /* Don't shrink too much */
+}
+.contact-info li {
+  flex: 1 1 auto; /* Allow them to shrink a little if needed */
+  text-align: center;
+  font-size: 0.8rem;
+  white-space: nowrap; /* Prevent cutting half numbers/text */
+}
+
+
 .mobile-contact {
   display: flex;
   gap: 1rem;
   font-size: 0.75rem;
 }
 
-.burger-menu {
-  display: block;
-  position: absolute;
-  right: 1rem;
-}
 
 .contact-nav {
   display: none;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 1rem;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  z-index: 100;
-  padding: 1rem;
+ 
 }
 
 .contact-nav.show {
@@ -254,7 +256,7 @@ cursor: pointer;
   font-size: 1rem;
   gap: 0.5rem;
 }
-
+/* 
 .nav-links li {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -262,21 +264,37 @@ cursor: pointer;
   background-color: #f2f2f2;
   border-radius: 5px;
   margin-bottom: 0.5rem;
-}
+} */
 
 .nav-links li:hover::after {
   width: 0; 
 }
-.contact-info{
-
+/* .contact-info{
+  
   scale: 80%;
-  width: 200%;
-  margin: 0;
-  gap: 1rem;
+  width: 100%;
+  margin-left: 18%;
+  gap: 0.4rem;
+  font-size: small;
+  flex-direction: column;
+
+} */
+.logo-section{
+  width: 30%;
+  padding: 0;
+  align-self: flex-end;
 
 }
-.contact-info li{
+/* .contact-info li{
+ scale: 60%;
+ font-size: 17px;
+
+ flex-wrap: wrap;
  
+
+} */
+.contfirst{
+  margin-left: 0;
 }
 .mobile-contact{
   width: 130%;

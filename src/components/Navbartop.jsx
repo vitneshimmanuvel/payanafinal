@@ -26,7 +26,6 @@ const Navbartop = () => {
     }
     setIsMobileMenuOpen(false); 
   };
-
   return (
     <div className='navbartop'>
       <div className='logo-section'>
@@ -49,13 +48,9 @@ const Navbartop = () => {
               <span>Study@payanaoverseas.com</span>
             </li>
           </ul>
-        
-
-        
-
         <div className={`contact-nav ${isMobileMenuOpen ? 'show' : ''}`}>
           <ul className='nav-links'>
-            {['tech',  'mbbs','study', 'language', 'invest', 'work'].map((category, index) => (
+            {['study',  'mbbs','study', 'language', 'invest', 'work'].map((category, index) => (
               <li
                 key={category}
                 data-category={category}

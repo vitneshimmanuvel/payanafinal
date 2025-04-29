@@ -116,3 +116,21 @@ input, button {
 input:invalid {
   border: 2px solid #e74c3c;
 }
+@media (max-width: 768px) { 
+
+  .invest-container{
+    height: auto;
+  }
+  .invest-flags{
+    flex-direction: column;
+    width: 90vw;
+    height: 95vh;
+  }
+
+  .flag-container{
+    width: 100%;
+  
+  }
+  /* Mobile layout */
+ 
+}
