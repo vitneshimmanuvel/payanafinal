@@ -135,21 +135,19 @@
     gap: 0.5rem;
   }
 
-  /* Social icons优化 */
+  /* Social icons */
   .social-icons a {
     font-size: 1.4rem;
     padding: 0.5rem;
     
   }
 
-  /* Improve touch targets */
   .footer-section .icon {
     width: 20px;
     height: 20px;
   }
 }
 
-/* Extra small screens */
 @media (max-width: 480px) {
   .map-image {
     max-width: 250px;
@@ -162,6 +160,16 @@
 
   .social-icons a {
     font-size: 1.2rem;
+    padding: 0;
+    position:none;
+    margin: 0;
     
   }
+  .social-icons{
+   
+   
+    margin-top: 7%;
+    top: 93%;
+  }
+  
 }

@@ -249,80 +249,83 @@
   padding: 2px;
   border-bottom: none; /* Removed underline */
 }
-
+/* Add this to your CSS */
 @media screen and (max-width: 768px) {
   .visatotal {
     flex-direction: column;
-    height: auto !important;
+    height: auto;
+    padding: 1rem 0;
   }
-  .visa-hero2, .gpt {
+
+  .visa-hero2 {
     width: 100%;
+    height: auto;
     padding: 2rem 1rem;
   }
-  .visa-hero2text {
-    position: static;
-    margin-bottom: 2rem;
-  }
+
   .visa-hero2text h1 {
-    text-align: center;
     font-size: 1.8rem;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-align: center;
   }
+
   .visa-threed {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    max-width: 90%;
-    margin: 0 auto;
-  }
-  .visa-cardvisa {
-    perspective: 1000px;
-    height: 280px;
-  }
-  .visa-cardvisa-inner {
-    height: 100%;
-  }
-  .gpt h1 {
-    text-align: center;
-    margin: 0;
-    font-size: 1.5rem;
-  }
-  .gptsecond {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2rem;
-  }
-  .circleavatar {
-    margin: 1rem 0;
-  }
-  .gptform {
-    flex-direction: column;
-    width: 100%;
-  }
-  .gptform input {
-    margin-bottom: 1rem;
-  }
-  .gptform button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .ask-area-container {
-    height: 300px;
-    overflow-y: auto;
+    gap: 1rem;
     margin-top: 1.5rem;
   }
-  .message {
+
+  .visa-cardvisa-inner {
+    height: 250px;
+  }
+
+  .visa-cardvisa{
+    height: 250px;
+  }
+  
+
+  .gpt {
+    width: 100%;
+    height: auto;
     padding: 1rem;
-    border-radius: 8px;
+  }
+
+  .gpt h1 {
+    display: none;
+  }
+
+  .gpt h2 {
+    text-align: center;
     margin-bottom: 1rem;
-    background-color: #fff;
-    border-left: 4px solid #545151;
   }
-  .ai {
-    border-left-color: #545151;
+
+  .gptsecond {
+    justify-content: center;
+    margin: 1rem 0;
   }
-  .user {
-    border-left-color: #e6f4ff;
-    text-align: right;
+
+  .ask-area-container {
+    height: auto;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .gptform {
+    flex-direction: row;
+    gap: 1%;
+  }
+
+  .gptform input {
+    border-radius: 10px;
+    width: 50%;
+  }
+
+  .gptform button {
+   margin:0;
+   padding: 0;
+  }
+  .ask-area-container{
+    height: 30vh;
   }
 }
+

@@ -116,21 +116,70 @@
   margin: 8px 0;
 }
 
+/* MBBSInfo.css */
 @media screen and (max-width: 768px) {
   .mbbs-hero {
-    flex-direction: column;
-    height: auto;
-    align-items: center;
+    flex-direction: column; /* Stack text and cards vertically */
+    padding: 20px 0; /* Adjust padding for mobile */
   }
 
   .mbbs-text {
-    width: 100%;
-    margin-bottom: 20px;
+    width: 100%; /* Full width text section */
+    padding: 0 20px 30px; /* Add bottom padding */
+    margin-bottom: 30px; /* Space between text and cards */
+  }
+
+  .mbbs-text h1 {
+    font-size: 2.5rem; /* Slightly smaller headline */
+    margin-bottom: 15px; /* Adjust spacing */
+  }
+
+  .mbbs-text p {
+    font-size: 1rem; /* Smaller paragraph text */
+    width: 100%; /* Full width paragraph */
   }
 
   .mbbs-cards {
     width: 100%;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 15px; /* Reduced gap */
+  }
+
+  .mbbs-card {
+    height: auto; /* Remove fixed height */
+    min-height: 200px; /* Minimum height */
+  }
+
+  .mbbs-card-front h2 {
+    font-size: 1.2rem;
+    text-align: center; /* Smaller card title */
+  }
+
+  .mbbs-card-back {
+    font-size: 0.9rem; /* Smaller back text */
+    padding: 15px 10px; /* Reduced padding */
+  }
+
+  .mbbs-card-back li {
+    margin: 5px 0; /* Reduced spacing */
+  }
+  .mbbs-text p {
+   
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .mbbs-text h1 {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+  .mbbs-text p {
+   
+    text-align: center;
+  }
+
+  .mbbs-cards {
+    grid-template-columns:  1fr; 
   }
 }

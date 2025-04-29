@@ -100,7 +100,7 @@ const StudyOptions = () => {
                 </div>
 
                 <div className="study-content">
-                    <div className="mobile-only-text">STUDY TECHNOLOGY/ARTS SELECT COUNTRY</div>
+                    <div className="mobile-only-text">STUDY TECHNOLOGY/ARTS </div>
 
                     {step === 1 && (
                         <>

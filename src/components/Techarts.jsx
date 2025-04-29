@@ -12,7 +12,6 @@ const Techarts = () => {
     // Clear input after submission
     setUserMessage('');
   };
-
   return (
     <div className='visatotal'> 
       <div className='visa-hero2'>
@@ -38,12 +37,9 @@ const Techarts = () => {
           ))}
         </div>
       </div>
-
       <div className='gpt'>
         <h1>Fell free to ask questions to our Ritza</h1>
-        
         <div className="gptsecond">
-          
           <div className="circleavatar"><img src="/jack.jpeg" alt="" /></div>
           <h2>Ritza</h2>
         </div>
@@ -65,7 +61,7 @@ const Techarts = () => {
         </form>
 
         <div className="ask-area-container">
-         <div className="message ai">Ask Ritza your questions!</div>
+         <div className="message ai">Coming soon ...</div>
                  
        </div>
       </div>
