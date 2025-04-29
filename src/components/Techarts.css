@@ -289,9 +289,7 @@
      margin-top:0;
      height: 200px;
   }
-  .circleavatar{
-  
-  }
+ 
 
   .gpt h1 {
     display: none;
@@ -306,7 +304,14 @@
     justify-content: center;
     margin-top: 0;
     width: 100%;
+    height: 10vh;
     justify-content: start;
+    padding: 0;
+    padding-top: 0;
+  }
+  .gptsecond h2{
+    font-size: 2rem;
+    margin-top: 4rem;
   }
 
   .ask-area-container {
@@ -332,5 +337,10 @@
   .ask-area-container{
     height: 35vh;
   }
+  .ritzaimg{
+     width: 75px;
+     height: 75px;
+  }
+
 }
 
