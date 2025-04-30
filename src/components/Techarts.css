@@ -30,6 +30,7 @@
   scale: 50%;
   position: relative;
   left: 15%;
+  visibility: hidden;
 }
 .gptsecond {
   display: flex;
@@ -137,8 +138,7 @@
 }
 
 .visa-hero2text {
-  position: relative;
-  top: -55px;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -147,7 +147,7 @@
 }
 
 .visa-hero2text h1 {
-  font-size: 1.5rem;
+  font-size: 2.1rem;
 }
 
 .visa-hero2text p {
@@ -242,7 +242,7 @@
   border-bottom: none; /* Removed underline */
 }
 /* Add this to your CSS */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 955px) {
   .visatotal {
     flex-direction: column;
     height: auto;

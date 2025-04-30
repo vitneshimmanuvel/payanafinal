@@ -232,6 +232,10 @@ input {
   .left-panel, .right-panel {
     padding: 20px;
   }
+  .worky{
+    position: relative;
+    top: 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -346,4 +350,23 @@ input {
 .popup-content strong {
   font-weight: bold;
   margin-right: 5px;
+}
+@media (max-width: 1150px) {
+    .worky{
+      font-size: 1.7rem;
+    }
+
+
+}
+@media (max-width: 770px) {
+  .worky{
+    font-size: 0.9rem;
+    padding-top: 1rem;
+    }
+  .left-panel{
+     height: fit-content;
+    
+  }
+  
+
 }

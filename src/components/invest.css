@@ -127,13 +127,13 @@ input:invalid {
     height: 95vh;
   }
   .card-back{
-    scale: 95%;
+    
   }
-
+  .contact-form{
+    scale: 80%;
+  }
   .flag-container{
     width: 100%;
-    
-    
   }
  
 }

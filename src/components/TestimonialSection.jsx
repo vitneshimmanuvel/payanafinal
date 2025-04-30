@@ -86,7 +86,6 @@ const TestimonialSection = () => {
           )}
         </div>
 
-        {/* Video 2 */}
         <div
           className="video-card"
           data-name="Varshini"
@@ -136,7 +135,6 @@ const TestimonialSection = () => {
           )}
         </div>
 
-        {/* Video 4 */}
         <div
           className="video-card"
           data-name="Vignesh"

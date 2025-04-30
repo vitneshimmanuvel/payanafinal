@@ -8,7 +8,7 @@
   border: 1px solid rgb(74, 74, 74);
   scale: 97%;
   gap: 2rem;
-  overflow-y: auto;
+  
 }
 
 .news-left {
@@ -242,7 +242,7 @@
   background: #e6f4ff;
 }
 /* Responsive stacking */
-@media (max-width: 768px) {
+@media (max-width: 1183px) {
   .news-gpt-container {
     flex-direction: column;
     height: auto;
@@ -252,10 +252,12 @@
   .news-right {
     padding: 0;
     border: none;
+    
   }
 
   .news-right {
-    padding-top: 2rem;
+    height: auto;
+    
   }
 }
 
@@ -264,7 +266,7 @@
   .news-gpt-container {
     flex-direction: column;
     padding: 1rem;
-    height: auto;
+    height:fit-content;
     padding-bottom: 8%;
   }
 

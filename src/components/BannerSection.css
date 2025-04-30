@@ -102,7 +102,7 @@
 
 .category-btn:nth-child(6) { background-color: #16a085; } /* Work */
 .category-btn:nth-child(6):hover { background-color: #12806a; }
-@media (max-width: 768px) {
+@media (max-width: 818px) {
   .banner-container {
     flex-direction: column;
     height: auto;

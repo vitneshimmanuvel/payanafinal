@@ -156,8 +156,8 @@
   }
 
   .mbbs-card-back {
-    font-size: 0.9rem; /* Smaller back text */
-    padding: 15px 10px; /* Reduced padding */
+    font-size:54px; /* Smaller back text */
+    padding: 5px 10px; /* Reduced padding */
   }
 
   .mbbs-card-back li {
@@ -184,5 +184,19 @@
   .mbbs-cards {
     grid-template-columns: repeat(2, 1fr);
     scale: 98%;
+  }
+}
+
+@media screen and (max-width: 1290px) {
+
+  .mbbs-card-back{
+    font-size: small;
+  }
+}
+
+@media screen and (max-width: 1045px) {
+
+  .mbbs-card-back{
+    font-size: x-small;
   }
 }
