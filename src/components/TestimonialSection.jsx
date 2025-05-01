@@ -63,10 +63,10 @@ const TestimonialSection = () => {
       <div className="testimonial-row">
         {/* Repeat for each video */}
         {[
-          { ref: iframeRef1, id: "video1", name: "Manju", src: "https://player.vimeo.com/video/1078764435?h=f0c55c6364&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0" },
-          { ref: iframeRef2, id: "video2", name: "Varshini", src: "https://player.vimeo.com/video/1079721907?h=5d005137ff&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0" },
-          { ref: iframeRef3, id: "video3", name: "Mohana Sangari", src: "https://player.vimeo.com/video/1078787624?h=8817470ba2&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0" },
-          { ref: iframeRef4, id: "video4", name: "Arun", src: "https://player.vimeo.com/video/1079721751?h=29d4679163&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0" },
+          { ref: iframeRef1, id: "video1", name: "Mrs. Manju", src: "https://player.vimeo.com/video/1078764435?h=f0c55c6364&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0" },
+          { ref: iframeRef2, id: "video2", name: "Miss Varshini", src: "https://player.vimeo.com/video/1079721907?h=5d005137ff&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0" },
+          { ref: iframeRef3, id: "video3", name: "Miss Mohana Sangari", src: "https://player.vimeo.com/video/1078787624?h=8817470ba2&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0" },
+          { ref: iframeRef4, id: "video4", name: "Mr. Arun", src: "https://player.vimeo.com/video/1079721751?h=29d4679163&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0" },
         ].map(({ ref, id, name, src }) => (
           <div
             key={id}

@@ -36,4 +36,4 @@ setTimeout(() => {
       <App />
     </StrictMode>
   );
-}, 2500);
+}, 3000);
