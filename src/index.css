@@ -5,6 +5,8 @@ box-sizing: border-box;
 list-style: none;
 scrollbar-width: none;
 font-family: sans-serif;
+width: 100%;
+  max-width: 100vw;
 }
 .total{
   scroll-behavior: smooth;
