@@ -284,7 +284,7 @@ const HelpCommunity = () => {
             <a href="https://www.instagram.com/payanaoverseassolutions/" className="social-icon instagram">
               <FaInstagram size={20} />
             </a>
-            <a href="#" className="social-icon facebook">
+            <a href="https://www.facebook.com/payanaOverseas?locale=hu_HU" className="social-icon facebook">
               <FaFacebookF size={20} />
             </a>
             <a href="https://x.com/PayanaOverseas" className="social-icon twitter">

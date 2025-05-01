@@ -61,7 +61,7 @@ const Footer = () => {
         ))}
 
         <div className="social-icons">
-          <a href="https://facebook.com" target="_blank" rel="noreferrer">
+          <a href="https://www.facebook.com/payanaOverseas?locale=hu_HU" target="_blank" rel="noreferrer">
             <FaFacebook />
           </a>
           <a
