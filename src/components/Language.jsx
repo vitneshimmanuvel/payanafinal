@@ -9,7 +9,7 @@ const levelDescriptions = {
   Russian: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
   Portuguese: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
   Spanish: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
-  English: ['	CEFR B1','	CEFR B2' ],
+  English: ['	CEFR B1','CEFR B2' ],
   Korean: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
   Dutch: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
   Italian: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],

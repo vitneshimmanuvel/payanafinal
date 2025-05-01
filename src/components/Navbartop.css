@@ -130,7 +130,7 @@ width: 75%;
   animation: nav-pulse 1.5s infinite;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 640px) and (max-width: 768px) {
   .navbartop {
     flex-direction: column;
     padding: 0.5rem 1rem;
@@ -148,7 +148,13 @@ width: 75%;
     margin: 0;
     scale: 120%;
   }
+  .contact-info{
+    padding-right: 2%;  
+  }
 
+  .icon{
+    display: none;
+  }
   .mobile-contact {
     display: flex;
     gap: 1rem;
@@ -190,11 +196,9 @@ width: 75%;
   .nav-links li:hover::after {
     width: 0; 
   }
+  
 }
 
-.burger-menu {
-  display: none;
-}
 
 
 .burger-menu {

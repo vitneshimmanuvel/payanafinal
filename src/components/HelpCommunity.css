@@ -351,9 +351,10 @@ input {
   font-weight: bold;
   margin-right: 5px;
 }
-@media (max-width: 1150px) {
+@media (max-width: 1300px) {
     .worky{
       font-size: 1.7rem;
+      margin-top: 1rem;
     }
 
 
