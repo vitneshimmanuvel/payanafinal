@@ -275,10 +275,16 @@ const HelpCommunity = () => {
             Connect with students, alumni, and experts via WhatsApp.
           </p>
 
-          <button className="whatsapp-button">
-            <FaWhatsapp size={20} />
-            <span>Join WhatsApp App</span>
-          </button>
+          <a
+  href="https://chat.whatsapp.com/EZosWS932Td9rkdB9HQrlk"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="whatsapp-button"
+>
+  <FaWhatsapp size={20} />
+  <span>Join WhatsApp App</span>
+</a>
+
 
           <div className="social-iconss">
             <a href="https://www.instagram.com/payanaoverseassolutions/" className="social-icon instagram">
