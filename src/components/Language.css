@@ -105,6 +105,8 @@
   @media (max-width: 768px) {
     .language-right{
       gap: 0.3rem;
+      justify-content: center;
+      
       
     }
   }
@@ -124,7 +126,7 @@
   
     .language-right {
       grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: minmax(120px, auto);
+      
       height: auto;
       max-height: fit-content;
       overflow-y: auto;
@@ -137,13 +139,15 @@
     }
   .lang-card-back{
     overflow-y: scroll;
-   
+    grid-template-columns: repeat(2, 1fr);
   }
     .lang-card {
       height: 120px;
-      margin-bottom: 15px;
-      width: 130px;
+      width: 100%;
       
+    }
+    .lang-card .lang-card-inner .lang-card-front{
+      font-size: 1.3rem;
     }
   
     .lang-level {
@@ -159,7 +163,7 @@
       border-radius: 15px;
      
       width: 90%;
-      height: 4000px;
+    
       padding: 4%;
     }
   }

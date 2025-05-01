@@ -8,7 +8,7 @@
   border: 1px solid black;
   width: 99%;
   background-color: #e6f4ff;
-  height: 90vh;
+  height: 100vh;
 }
 
 .visa-hero2 {
@@ -37,9 +37,11 @@
   align-items: center;
   justify-content: center;
   height: auto;
+  margin-top: 30%;
   flex-direction: row;
   justify-content: start;
-  gap: 3%;
+  gap: 6%;
+  color: #3a3a3a;
  
 }
 .gptsecond h2{
@@ -130,7 +132,13 @@
     margin-top: 1rem;
   }
 
-  
+  .gpt .gptsecond{
+    font-size: 1rem;
+    margin-bottom: 10vh;
+  }
+  .gpt .ritzaimg{
+    margin-top: 20%;
+  }
 
   .gpt h1 {
     font-size: 1.5rem;
@@ -179,10 +187,10 @@
   transform-style: preserve-3d;
 }
 .gptform{
-  visibility: hidden;
+   display: none;
 }
 .ask-area-container{
-  visibility: hidden;
+  display: none;
 }
 .visa-cardvisa:hover .visa-cardvisa-inner {
   transform: rotateY(180deg);
