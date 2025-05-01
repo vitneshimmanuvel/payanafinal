@@ -47,7 +47,7 @@ width: 75%;
 .contact-info {
   display: flex;
   gap: 2rem;
-  color: rgb(134, 134, 134);
+  color: rgb(28, 28, 28);
   list-style: none;
   font-size: 0.9rem;
   margin-top: 2%;
@@ -67,7 +67,7 @@ width: 75%;
 .nav-links {
   display: flex;
   list-style: none;
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: bolder;
   width: 100%;
   justify-content: space-around;
