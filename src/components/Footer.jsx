@@ -21,22 +21,22 @@ const Footer = () => {
     {
       title: "Contact",
       email: "payanaoverseas@gmail.com",
-      phone: "+1 647 834 2003",
+      phones: ["+91 90036 19777", "+1 647 834 2003"],
     },
     {
       title: "Study",
       email: "study@payanaoverseas.com",
-      phone: "+91 70108 38005",
+      phones: ["+91 90036 19777"],
     },
     {
       title: "Work",
       email: "work@payanaoverseas.com",
-      phone: "+91 70108 38005",
+      phones: ["+91 70108 38005"],
     },
     {
       title: "About Us",
       email: "",
-      phone: "",
+      phones: [],
     },
   ];
 
@@ -51,11 +51,12 @@ const Footer = () => {
                 <FaEnvelope className="icon" /> {section.email}
               </p>
             )}
-            {section.phone && (
-              <p>
-                <FaPhone className="icon" /> {section.phone}
-              </p>
-            )}
+            {section.phones &&
+              section.phones.map((phone, i) => (
+                <p key={i}>
+                  <FaPhone className="icon" /> {phone}
+                </p>
+              ))}
           </div>
         ))}
 
@@ -63,14 +64,25 @@ const Footer = () => {
           <a href="https://facebook.com" target="_blank" rel="noreferrer">
             <FaFacebook />
           </a>
-          <a href="https://www.instagram.com/payanaoverseassolutions/" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.instagram.com/payanaoverseassolutions/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaInstagram />
           </a>
-          <a href="https://www.youtube.com/channel/UCwhgSMTSMig0sbgN_0mbyHg" target="_blank" rel="noreferrer">
-          <FaYoutube />
+          <a
+            href="https://www.youtube.com/channel/UCwhgSMTSMig0sbgN_0mbyHg"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaYoutube />
           </a>
-          <a href="https://x.com/PayanaOverseas" target="_blank" rel="noreferrer">
-            
+          <a
+            href="https://x.com/PayanaOverseas"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaXTwitter />
           </a>
         </div>

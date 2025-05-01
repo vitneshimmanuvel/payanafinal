@@ -178,7 +178,12 @@
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
-
+.gptform{
+  visibility: hidden;
+}
+.ask-area-container{
+  visibility: hidden;
+}
 .visa-cardvisa:hover .visa-cardvisa-inner {
   transform: rotateY(180deg);
 }

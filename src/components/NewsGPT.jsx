@@ -21,7 +21,6 @@ const NewsGPT = () => {
                 Recent studies show that international families face unique educational hurdles, including curriculum differences, language barriers, and cultural adaptation for children.
               </p>
               <p className="news-description ">
-                Experts recommend early planning and research when considering education abroad, with particular attention to accreditation, recognition, and future education pathways.
               </p>
               <span className="news-tag">Canada</span>
             </div>

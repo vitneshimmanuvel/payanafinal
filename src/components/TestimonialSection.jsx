@@ -113,7 +113,7 @@ const TestimonialSection = () => {
         {/* Video 3 */}
         <div
           className="video-card"
-          data-name="Shankari"
+          data-name="Mohana Sangari"
           onMouseEnter={() => handleMouseEnter(iframeRef3, "video3")}
           onMouseLeave={() => handleMouseLeave(iframeRef3, "video3")}
         >
@@ -137,7 +137,7 @@ const TestimonialSection = () => {
 
         <div
           className="video-card"
-          data-name="Vignesh"
+          data-name="Arun"
           onMouseEnter={() => handleMouseEnter(iframeRef4, "video4")}
           onMouseLeave={() => handleMouseLeave(iframeRef4, "video4")}
         >

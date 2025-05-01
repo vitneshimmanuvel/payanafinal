@@ -8,18 +8,28 @@ const BannerSection = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  
   return (
     <div className="banner-container">
       <div className="banner-left">
         <img src='banner.svg' className='bannerimg' alt="Banner Image" />
       </div>
       <div className="banner-right">
-        <button className="category-btn" onClick={() => scrollToSection('study')}> STUDY Tech</button>
-        <button className="category-btn" onClick={() => scrollToSection('mbbs')}>STUDY MBBS</button>
-        <button className="category-btn" onClick={() => scrollToSection('study')}>STUDY ARTS</button>
-        <button className="category-btn" onClick={() => scrollToSection('language')}>Language</button>
-        <button className="category-btn" onClick={() => scrollToSection('invest')}>Invest</button>
-        <button className="category-btn" onClick={() => scrollToSection('work')}>Work</button>
+        <h2 className="banner-heading">What are you looking for?</h2>
+        
+        <div className="buttons-grid">
+          <button className="category-btn" onClick={() => scrollToSection('study')}>STUDY Tech</button>
+          <button className="category-btn" onClick={() => scrollToSection('mbbs')}>STUDY MBBS</button>
+          <button className="category-btn" onClick={() => scrollToSection('study')}>STUDY ARTS</button>
+          <button className="category-btn" onClick={() => scrollToSection('language')}>Language</button>
+          <button className="category-btn" onClick={() => scrollToSection('invest')}>Invest</button>
+          <button className="category-btn" onClick={() => scrollToSection('work')}>Work</button>
+        </div>
+        
+        <div className="contact-info">
+          <p>For free counseling contact us:</p>
+          <a href="tel:+919003619777" className="contact-phone">+91 90036 19777</a>
+        </div>
       </div>
     </div>
   );

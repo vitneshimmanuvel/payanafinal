@@ -233,7 +233,7 @@ const HelpCommunity = () => {
               </div>
 
               <div className="form-group">
-               
+                 
                 <input
                   type="number"
                   id="phone"
@@ -255,6 +255,7 @@ const HelpCommunity = () => {
                 {isSubmitting ? 'Submitting...' : 'Submit'}
               </button>
             </div>
+            
           )}
 
           {step === 5 && (
