@@ -33,11 +33,7 @@ const Footer = () => {
       email: "work@payanaoverseas.com",
       phones: ["+91 70108 38005"],
     },
-    {
-      title: "About Us",
-      email: "",
-      phones: [],
-    },
+  
   ];
 
   return (
@@ -60,7 +56,8 @@ const Footer = () => {
           </div>
         ))}
 
-        <div className="social-icons">
+
+<div className="fottersocial-icons">
           <a href="https://www.facebook.com/payanaOverseas?locale=hu_HU" target="_blank" rel="noreferrer">
             <FaFacebook />
           </a>
@@ -86,6 +83,8 @@ const Footer = () => {
             <FaXTwitter />
           </a>
         </div>
+
+      
       </div>
 
       <div className="footer-right" onClick={openMap}>

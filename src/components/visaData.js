@@ -32,13 +32,12 @@ export const visaData = [
         'PR Visa',
         'Work Visa',
         'Student Visa',
-        'Express Entry Program',
-        'PNP',
         'Business Visa',
         'Visit Visa',
         'Digital Nomad Visa'
       ]
     },
+    
     {
       name: 'UK',
       details: [

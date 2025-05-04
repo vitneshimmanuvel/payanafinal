@@ -42,19 +42,28 @@
 }
 
 /* Push social icons to bottom left */
-.social-icons {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-  padding: 1rem 0;
+
+.footer-left-group{
+  
+}
+.fottersocial-icons {
+  height: 50%;
+  margin-top: 1%;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  grid-template-rows: 2fr 2fr;
+
+  width: fit-content;
+  text-align: center;
 }
 
-.social-icons a {
-  font-size: 1.3rem;
+.fottersocial-icons a {
+  font-size: 3rem;
   color: #78B7D0;
+  padding: 1%;
+
+  height: 100%;
   transition: transform 0.2s ease;
 }
 
