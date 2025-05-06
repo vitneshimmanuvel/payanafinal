@@ -41,7 +41,7 @@ const Navbartop = () => {
         <div className='navbartop'>
             <div className='logo-section'>
                 <img 
-                    src={isMobileView ? "payanalogopng.png" : "final 6.png"} 
+                    src={isMobileView ? "payanalogopng.png" : "final 5.png"} 
                     alt="Logo"
                 />
             </div>
