@@ -77,13 +77,13 @@ const TestimonialSection = () => {
           {
             ref: iframeRef2,
             id: "video2",
-            name: "Miss Varshini",
+            name: "Ms Varshini",
             src: "https://player.vimeo.com/video/1079721907?h=5d005137ff&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
           },
           {
             ref: iframeRef3,
             id: "video3",
-            name: "Miss Mohana Sangari",
+            name: "Ms Mohana Sangari",
             src: "https://player.vimeo.com/video/1078787624?h=8817470ba2&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
           },
           
