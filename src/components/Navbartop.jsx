@@ -41,10 +41,11 @@ const Navbartop = () => {
         <div className='navbartop'>
             <div className='logo-section'>
                 <img 
-                    src={isMobileView ? "payanalogopng.png" : "Payana Overseas Solutions.svg"} 
+                    src={isMobileView ? "payanalogopng.png" : "final 5.png"} 
                     alt="Logo"
                 />
             </div>
+            <div className="redlogo"></div>
             <div className="coloumintop">
                 <ul className='contact-info'>
                     <li className='contfirst'>
@@ -63,6 +64,7 @@ const Navbartop = () => {
                 <div className={`contact-nav ${isMobileMenuOpen ? 'show' : ''}`}>
                     <ul className='nav-links'>
                         {['study', 'mbbs', 'study', 'language', 'invest', 'work'].map((category, index) => (
+                            
                             <li
                                 key={category}
                                 data-category={category}

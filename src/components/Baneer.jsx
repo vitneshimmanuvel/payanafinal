@@ -10,7 +10,6 @@ const BannerSection = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
   return (
     <div className="banner-container">
       <div className="banner-left">
@@ -20,13 +19,12 @@ const BannerSection = () => {
           </div>
         )}
         <img
-          src="banner.svg"
+          src="bannerjay.jpg"
           className={`bannerimg ${isImageLoaded ? 'visible' : 'hidden'}`}
           alt="Banner Image"
           onLoad={() => setIsImageLoaded(true)}
         />
       </div>
-
       <div className="banner-right">
         <h2 className="banner-heading">What are you looking for?</h2>
 

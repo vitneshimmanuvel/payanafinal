@@ -131,9 +131,7 @@
 }
 .responsehold{
   display: flex;
-  height: fit-content;
-  
-  
+  height: 50%;
 }
 .holeone{
   background-color: rgb(125, 186, 216);
