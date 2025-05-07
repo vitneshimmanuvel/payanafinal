@@ -41,14 +41,15 @@ const Navbartop = () => {
         <div className='navbartop'>
             <div className='logo-section'>
                 <img 
-                    src={isMobileView ? "payanalogopng.png" : "final 5.png"} 
+                    // src={isMobileView ? "payanalogopng.png" : "final 5.png"} 
+                    src="final 5.png"
                     alt="Logo"
                 />
             </div>
             <div className="redlogo"></div>
             <div className="coloumintop">
                 <ul className='contact-info'>
-                    <li className='contfirst'>
+                    <li>
                         <FaPhone className="icon" size={18} />
                         <span>+91 90036 19777</span>
                     </li>
