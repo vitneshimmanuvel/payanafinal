@@ -6,6 +6,9 @@ list-style: none;
 scrollbar-width: none;
 font-family: sans-serif;
 }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 .total{
   scroll-behavior: smooth;
   background-color: #fffbfb;
