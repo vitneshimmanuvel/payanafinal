@@ -94,7 +94,7 @@
   .turkish     { background-color: #354f57; }
   
   .lang-level {
-    width: 40px;
+    width: fit-content;
     text-align: center;
     font-weight: bold;
     background: #ede4e4aa;
@@ -272,3 +272,6 @@
       }
   
   }
+@media (max-height: 770px) and (min-height: 550px) {
+
+}

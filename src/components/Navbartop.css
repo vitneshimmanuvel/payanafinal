@@ -381,3 +381,15 @@
     margin-left:5px;
   }
 }
+@media (max-height: 800px) and (min-height: 550px) {
+ .nav-links{
+  
+  font-size: 1rem;
+  
+ }
+  .nav-links li{
+    padding-top: 2%;
+    text-align: center;
+    
+  }
+}

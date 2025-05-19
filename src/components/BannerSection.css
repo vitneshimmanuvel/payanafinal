@@ -268,3 +268,20 @@
     transform: rotate(360deg);
   }
 }
+
+
+@media (max-height: 770px) and (min-height: 550px) {
+  .buttons-grid{
+   height: 50%;
+    display: grid;
+    row-gap: 1%;
+  }
+  .banner-heading{
+    margin-bottom: 0;
+    font-size: 3.5rem;
+  }
+  .banner-right{
+    height: 90%;
+  }
+  
+}

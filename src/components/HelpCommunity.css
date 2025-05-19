@@ -371,3 +371,14 @@ input {
   
 
 }
+@media (max-height: 770px) and (min-height: 550px) {
+  .worky{
+    font-size: 1.2rem;
+    padding-top: 1rem;
+    position: relative;
+    }
+  .left-panel{
+     height: fit-content;
+    
+  }
+}

@@ -195,3 +195,12 @@ p {
         font-size: 0.9rem;
     }
 }
+
+
+@media (max-height: 770px) and (min-height: 550px) {
+
+    .mobile-only-text{
+
+        margin-bottom: 0;
+    }
+}

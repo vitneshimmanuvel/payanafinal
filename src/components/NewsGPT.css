@@ -39,6 +39,8 @@
   margin-right: 0;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scrollbar-width: thin; /* Options: auto, thin, none */
+  scrollbar-color: rgb(182, 207, 182) transparent;
   
 }
 
@@ -289,4 +291,35 @@
 }
 
 
+@media (max-height: 770px) and (min-height: 550px) {
+  .news-card{
+    height: fit-content;
+    padding-bottom: 2%;
+  }
 
+  .responsehold{
+   
+    height: 100%;
+   
+  }
+  .about-payana{
+    height: 100%;
+    
+  }
+  
+  .holeone{
+    
+    height: 100%;
+    font-size: 14px;
+  }
+  .feature-item{
+    margin-bottom: 1%;
+  }
+  .holetwo img{
+   
+    
+  }
+  .holetwo{
+    height: 100%;
+  }
+}
