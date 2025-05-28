@@ -11,6 +11,7 @@ const MBBSInfo = () => {
         <p>
           Explore top countries to pursue MBBS with expert guidance and support throughout the process.
         </p>
+        <img src='./public/doctor.jpg'></img>
       </div>
       <div className="mbbs-cards">
         {mbdata.map((item, index) => (

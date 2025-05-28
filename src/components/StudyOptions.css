@@ -5,8 +5,7 @@
     align-items: center;
     height: 99vh;
     width: 100%;
-    scale: 97%;                                                                                                         
-}
+    scale: 97%; }
 .close-btn{
     background-color: #ffa305;
 }
@@ -40,7 +39,7 @@
 .study-content {
     flex: 1;
     padding: 40px;
-    background-color: #e6f4ff;
+    
     color: #333;
     display: flex;
     flex-direction: column;

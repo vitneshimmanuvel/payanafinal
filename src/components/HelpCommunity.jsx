@@ -4,10 +4,10 @@ import { FaWhatsapp, FaInstagram, FaFacebookF, FaXTwitter } from 'react-icons/fa
 import { FaYoutube } from 'react-icons/fa';
 
 const bannerImages = [
-  "ChatGPT Image Apr 17, 2025, 02_59_38 PM.png",
-  "ChatGPT Image Apr 17, 2025, 03_00_15 PM.png",
-  "ChatGPT Image Apr 17, 2025, 03_04_54 PM.png",
-  "ChatGPT Image Apr 17, 2025, 02_58_47 PM.png",
+  "insta-11.jpg",
+  "insta-12.jpg",
+  "cahnge21.jpg",
+  "cahnge22.jpg",
 ];
 
 const HelpCommunity = () => {

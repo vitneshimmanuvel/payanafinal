@@ -3,7 +3,8 @@
   padding: 0;
 box-sizing: border-box;
 list-style: none;
-scrollbar-width: none;
+scrollbar-width: thin;
+ scrollbar-color: green #ffffff;
 font-family: sans-serif;
 }
 *, *::before, *::after {

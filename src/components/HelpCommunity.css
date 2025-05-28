@@ -17,7 +17,7 @@
 
 .banner-slideshow {
   position: relative;
-  height: 500px; /* Adjusted height for landscape orientation */
+  height: 570px; 
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -143,20 +143,20 @@ input {
 }
 
 .worky{
-  position: absolute;
-  top: 49%;
+  
   font-size: 2.3rem;
   color: #354F57;
 }
-/* Right Panel - Community Info */
+
 .right-panel {
-  background-color: #aafac4;
+    /* background: radial-gradient(circle, #fdba13, #f59e0b, #d76a17); */
   padding: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-color: #bee3ba;
 }
 
 .right-heading {
@@ -171,7 +171,7 @@ input {
   color: #555;
 }
 
-/* WhatsApp button */
+
 .whatsapp-button {
   background-color: #25d366;
   color: white;
@@ -218,7 +218,7 @@ input {
   background-color: #f0f0f0;
 }
 
-/* Responsive Design */
+
 @media (max-width: 992px) {
   .content-container {
     grid-template-columns: 1fr;

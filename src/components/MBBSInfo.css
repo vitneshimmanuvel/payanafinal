@@ -21,8 +21,12 @@
   width: 35%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   color: #545151;
+
+   /* Add background image */
+  
+
 }
 
 .mbbs-text h1 {
@@ -104,6 +108,7 @@
   border: 1px solid #ddd;
   box-sizing: border-box;
   overflow-y: auto;
+  scrollbar-width: none;
 }
 
 .mbbs-card-back ul {
