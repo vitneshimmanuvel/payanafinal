@@ -225,6 +225,7 @@
   .contact-infoi p {
     font-size: 0.9rem;
     gap: 0.4rem;
+    margin-left: 4%;
   }
 
   .contact-phone {
