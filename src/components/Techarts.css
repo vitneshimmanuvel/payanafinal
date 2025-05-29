@@ -1,15 +1,18 @@
 :root {
   --text-black: #545151;
+ 
 }
 
 .visatotal {
   display: flex;
   scale: 96%;
-  border: 1px solid black;
+  border-radius: 12px;
   width: 99%;
-  background-color: #e6f4ff;
-  /* background-color: #9a5bb6;
-  
+  background-color: #e9e7e7;
+  /* background-color: #b1c786; */
+  /* background-color: #e6f4ff; */
+/*   
+   background-color: #b3e0d7;
   /* background: linear-gradient(135deg, #9a5bb6 0%, #b173c9 50%, #8a3ba3 100%); */
   /* background: radial-gradient(circle, #b173c9 0%, #9a5bb6 50%, #6e2d8c 100%); */
    
@@ -34,7 +37,6 @@
 
 .gpt h1 {
   text-align: end;
-  
   margin-left: 20%;
   scale: 50%;
   position: relative;
@@ -56,6 +58,7 @@
 .gptsecond h2{
   font-size: 2.7rem;
   
+  
 }
 .ritzaimg{
   width: 30%;
@@ -69,7 +72,8 @@
   height: 40%;
   background-color: #ffffff;
   padding:1.5%;
-  color: #545151;
+  /* color: #545151; */
+  
   border-radius: 12px;
 }
 
@@ -166,6 +170,7 @@
 
 .visa-hero2text h1 {
   font-size: 2.1rem;
+ 
 }
 
 .visa-hero2text p {

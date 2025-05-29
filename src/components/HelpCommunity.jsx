@@ -5,8 +5,9 @@ import { FaYoutube } from 'react-icons/fa';
 
 const bannerImages = [
   "insta-11.jpg",
-  "insta-12.jpg",
   "cahnge21.jpg",
+  "insta-12.jpg",
+  
   "cahnge22.jpg",
 ];
 
@@ -116,7 +117,7 @@ const HelpCommunity = () => {
             <img src={image} alt={`Banner ${index + 1}`} />
           </div>
         ))}
-
+        
         <div className="banner-dots">
           {bannerImages.map((_, index) => (
             <span
@@ -125,6 +126,20 @@ const HelpCommunity = () => {
               onClick={() => setCurrentBanner(index)}
             />
           ))}
+        </div>
+        
+        {/* Carousel Navigation Buttons */}
+        <div 
+          className="carousel-nav carousel-prev" 
+          onClick={() => setCurrentBanner((currentBanner - 1 + bannerImages.length) % bannerImages.length)}
+        >
+          &#10094;
+        </div>
+        <div 
+          className="carousel-nav carousel-next" 
+          onClick={() => setCurrentBanner((currentBanner + 1) % bannerImages.length)}
+        >
+          &#10095;
         </div>
       </div>
 
@@ -276,15 +291,14 @@ const HelpCommunity = () => {
           </p>
 
           <a
-  href="https://chat.whatsapp.com/EZosWS932Td9rkdB9HQrlk"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="whatsapp-button"
->
-  <FaWhatsapp size={20} />
-  <span>Join WhatsApp App</span>
-</a>
-
+            href="https://chat.whatsapp.com/EZosWS932Td9rkdB9HQrlk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="whatsapp-button"
+          >
+            <FaWhatsapp size={20} />
+            <span>Join WhatsApp App</span>
+          </a>
 
           <div className="social-iconss">
             <a href="https://www.instagram.com/payanaoverseassolutions/" className="social-icon instagram">
@@ -299,7 +313,6 @@ const HelpCommunity = () => {
             <a href="https://www.youtube.com/channel/UCwhgSMTSMig0sbgN_0mbyHg" className="social-icon twitter">
               <FaYoutube size={20} />
             </a>
-
           </div>
         </div>
       </div>

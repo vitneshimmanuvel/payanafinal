@@ -12,6 +12,7 @@ import NewsGPT from './components/NewsGPT'
 import StudyOptions from './components/StudyOptions'
 import Techarts from './components/Techarts'
 import TestimonialSection from './components/TestimonialSection'
+import WhatsAppButton from './components/WhatsAppButton'
 function App() {
   return (
     <div className='total'>
@@ -42,6 +43,7 @@ function App() {
       <TestimonialSection />
       <Footer />
       <FooterBanner/>
+      <WhatsAppButton />
     </div>
   )
 }
