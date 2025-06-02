@@ -4,13 +4,12 @@ import { FaWhatsapp } from 'react-icons/fa';
 import './WhatsAppButton.css';
 
 const WhatsAppButton = () => {
-
   return (
     <div className="whatsapp-fixed">
       <a
-       href="https://chat.whatsapp.com/EZosWS932Td9rkdB9HQrlk"
-  target="_blank"
-  rel="noopener noreferrer"
+        href="https://wa.me/917806925669"
+        target="_blank"
+        rel="noopener noreferrer"
         className="whatsapp-buttonn"
         title="Chat on WhatsApp"
       >
