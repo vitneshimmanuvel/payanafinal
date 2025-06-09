@@ -1,56 +1,102 @@
 import "./TestimonialSection.css";
 import Player from "@vimeo/player";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 const TestimonialSection = () => {
-  const iframeRef1 = useRef(null);
-  const iframeRef2 = useRef(null);
-  const iframeRef3 = useRef(null);
-  const iframeRef4 = useRef(null);
-  const [playingState, setPlayingState] = React.useState({
-    video1: false,
-    video2: false,
-    video3: false,
-    video4: false,
-  });
+  const trackRef = useRef(null);
+  const iframeRefs = useRef([]);
+  const playersRef = useRef([]);
 
-  const handleMouseEnter = (ref, videoId) => {
-    if (ref.current && !playingState[videoId]) {
-      const player = new Player(ref.current);
-      player.play();
-      setPlayingState((prev) => ({ ...prev, [videoId]: true }));
-    }
-  };
+  const [playingState, setPlayingState] = useState([]);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
-  const handleMouseLeave = (ref, videoId) => {
-    if (ref.current) {
-      const player = new Player(ref.current);
-      player.pause();
-      player.setCurrentTime(0);
-      setPlayingState((prev) => ({ ...prev, [videoId]: false }));
+  const videos = [
+    {
+      id: "video1",
+      name: "Mrs. Manju",
+      src: "https://player.vimeo.com/video/1081228912?h=477900a8cb&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
+    },
+    {
+      id: "video2",
+      name: "Ms Jeslin Sabatini",
+      src: "https://player.vimeo.com/video/1084259988?badge=0&title=0&byline=0&portrait=0&controls=0&sharing=0&autoplay=0&loop=0"
+    },
+    {
+      id: "video3",
+      name: "Ms Mohana Sangari",
+      src: "https://player.vimeo.com/video/1078787624?h=8817470ba2&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
+    },
+    {
+      id: "video4",
+      name: "Mr Haree Harun",
+      src: "https://player.vimeo.com/video/1084259918?badge=0&title=0&byline=0&portrait=0&controls=0&sharing=0&autoplay=0&loop=0"
+    },
+    {
+      id: "video5",
+      name: "Mr Vignesh Sivakumar",
+      src: "https://player.vimeo.com/video/1090840248?h=0b3a8f1943&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
+    },
+    {
+      id: "video6",
+      name: "Mr Neil Issac",
+      src: "https://player.vimeo.com/video/1090840047?h=a28c1515af&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
     }
-  };
-
-  const handlePlayButtonClick = (ref, videoId) => {
-    if (ref.current) {
-      const player = new Player(ref.current);
-      if (!playingState[videoId]) {
-        player.play();
-        setPlayingState((prev) => ({ ...prev, [videoId]: true }));
-      } else {
-        player.pause();
-        setPlayingState((prev) => ({ ...prev, [videoId]: false }));
-      }
-    }
-  };
+  ];
 
   useEffect(() => {
-    [iframeRef1, iframeRef2, iframeRef3, iframeRef4].forEach((ref) => {
-      if (ref.current) {
-        new Player(ref.current);
-      }
-    });
+    setPlayingState(Array(videos.length).fill(false));
+  }, [videos.length]);
+
+  // Detect desktop
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.matchMedia("(min-width: 1240px)").matches);
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
   }, []);
+
+  // Auto-scroll right-to-left when not paused
+  useEffect(() => {
+    if (!isDesktop) return;
+    const track = trackRef.current;
+    if (!track) return;
+
+    let animationFrame;
+    const speed = 50; // pixels per second
+    let last = performance.now();
+
+    const animate = (now) => {
+      const delta = now - last;
+      if (!isPaused) {
+        track.scrollLeft -= (speed * delta) / 1000;
+        if (track.scrollLeft <= 0) {
+          track.scrollLeft = track.scrollWidth;
+        }
+      }
+      last = now;
+      animationFrame = requestAnimationFrame(animate);
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [isDesktop, isPaused]);
+
+  // Toggle play/pause for individual videos
+  const handlePlay = (index) => {
+    if (!playersRef.current[index]) {
+      playersRef.current[index] = new Player(iframeRefs.current[index]);
+    }
+    const player = playersRef.current[index];
+    if (playingState[index]) player.pause();
+    else player.play();
+
+    setPlayingState((prev) => {
+      const next = [...prev];
+      next[index] = !next[index];
+      return next;
+    });
+  };
 
   return (
     <section className="testimonial-section">
@@ -59,59 +105,31 @@ const TestimonialSection = () => {
         <p>Our Success Stories</p>
       </div>
 
-      <div className="testimonial-row">
-        {[
-          {
-          ref: iframeRef1,
-          id: "video5",
-          name: " Mr Haree Harun  ",
-          src: "https://player.vimeo.com/video/1084259918?badge=0&title=0&byline=0&portrait=0&controls=0&sharing=0&autoplay=0&loop=0"
-          },
-
-          {
-            ref: iframeRef2,
-            id: "video2",
-            name: "Ms Jeslin Sabatini",
-             src: "https://player.vimeo.com/video/1084259988?badge=0&title=0&byline=0&portrait=0&controls=0&sharing=0&autoplay=0&loop=0"
-          },
-          {
-            ref: iframeRef3,
-            id: "video1",
-            name: "Mrs. Manju",
-            src: "https://player.vimeo.com/video/1081228912?h=477900a8cb&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
-          },
-          {
-            ref: iframeRef4,
-            id: "video3",
-            name: "Ms Mohana Sangari",
-            src: "https://player.vimeo.com/video/1078787624?h=8817470ba2&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
-          },
-          
-        ].map(({ ref, id, name, src }) => (
+      <div
+        className="testimonial-row"
+        ref={trackRef}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {videos.map((video, idx) => (
           <div
-            key={id}
+            key={video.id}
             className="video-card"
-            data-name={name}
-            onMouseEnter={() => handleMouseEnter(ref, id)}
-            onMouseLeave={() => handleMouseLeave(ref, id)}
-            onClick={() => handlePlayButtonClick(ref, id)}
+            data-name={video.name}
+            onClick={() => handlePlay(idx)}
           >
             <div className="video-overlay"></div>
-            <div className="video-text"></div>
             <iframe
-              ref={ref}
-              src={src}
+              ref={(el) => (iframeRefs.current[idx] = el)}
+              src={video.src}
               frameBorder="0"
               allow="autoplay; fullscreen; picture-in-picture"
-              title={`Vimeo ${id}`}
+              title={`Vimeo ${video.id}`}
             ></iframe>
-            {!playingState[id] && (
+            {!playingState[idx] && (
               <div
                 className="play-button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handlePlayButtonClick(ref, id);
-                }}
+                onClick={(e) => { e.stopPropagation(); handlePlay(idx); }}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polygon points="5 3 19 12 5 21 5 3"></polygon>
