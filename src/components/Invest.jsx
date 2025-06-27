@@ -27,7 +27,7 @@ const Invest = () => {
     }));
 
     try {
-      const response = await fetch('https://web-production-d0790f.up.railway.app/submit-invest-form', {
+      const response = await fetch('http://13.201.58.112:5000/submit-invest-form', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

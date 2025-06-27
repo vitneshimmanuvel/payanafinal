@@ -73,7 +73,7 @@ const StudyOptions = () => {
             ...formData
         };
 
-        fetch('https://web-production-d0790f.up.railway.app/submit-form', {
+        fetch('http://13.201.58.112:5000/submit-form', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
