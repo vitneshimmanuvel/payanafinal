@@ -36,7 +36,7 @@ const Invest = () => {
       });
 
       const data = await response.json();
-      //alfa
+      //alfa beta
       if (data.success) {
         setSubmissions(prev => ({
           ...prev,
