@@ -12,37 +12,43 @@ const TestimonialSection = () => {
   const [isDesktop, setIsDesktop] = useState(false);
 
   const videos = [
-    {
-      id: "video1",
-      name: "Mrs. Manju",
-      src: "https://player.vimeo.com/video/1081228912?h=477900a8cb&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
-    },
-    {
-      id: "video2",
-      name: "Ms Jeslin Sabatini",
-      src: "https://player.vimeo.com/video/1084259988?badge=0&title=0&byline=0&portrait=0&controls=0&sharing=0&autoplay=0&loop=0"
-    },
-    {
-      id: "video3",
-      name: "Ms Mohana Sangari",
-      src: "https://player.vimeo.com/video/1078787624?h=8817470ba2&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
-    },
-    {
-      id: "video4",
-      name: "Mr Haree Harun",
-      src: "https://player.vimeo.com/video/1084259918?badge=0&title=0&byline=0&portrait=0&controls=0&sharing=0&autoplay=0&loop=0"
-    },
-    {
-      id: "video5",
-      name: "Mr Vignesh Sivakumar",
-      src: "https://player.vimeo.com/video/1090840248?h=0b3a8f1943&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
-    },
-    {
-      id: "video6",
-      name: "Mr Neil Issac",
-      src: "https://player.vimeo.com/video/1090840047?h=a28c1515af&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
-    }
-  ];
+  {
+    id: "video0",
+    name: "Rajendran Sakthivel",
+    src: "https://player.vimeo.com/video/1103351104?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&controls=0&sharing=0&autoplay=0&loop=0"
+  },
+  {
+    id: "video1",
+    name: "Mrs. Manju",
+    src: "https://player.vimeo.com/video/1081228912?h=477900a8cb&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
+  },
+  {
+    id: "video2",
+    name: "Ms Jeslin Sabatini",
+    src: "https://player.vimeo.com/video/1084259988?badge=0&title=0&byline=0&portrait=0&controls=0&sharing=0&autoplay=0&loop=0"
+  },
+  {
+    id: "video3",
+    name: "Ms Mohana Sangari",
+    src: "https://player.vimeo.com/video/1078787624?h=8817470ba2&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
+  },
+  {
+    id: "video4",
+    name: "Mr Haree Harun",
+    src: "https://player.vimeo.com/video/1084259918?badge=0&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
+  },
+  {
+    id: "video5",
+    name: "Mr Vignesh Sivakumar",
+    src: "https://player.vimeo.com/video/1090840248?h=0b3a8f1943&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
+  },
+  {
+    id: "video6",
+    name: "Mr Neil Issac",
+    src: "https://player.vimeo.com/video/1090840047?h=a28c1515af&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
+  }
+];
+
 
   useEffect(() => {
     setPlayingState(Array(videos.length).fill(false));
