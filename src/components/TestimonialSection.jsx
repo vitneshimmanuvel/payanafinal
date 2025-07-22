@@ -14,7 +14,7 @@ const TestimonialSection = () => {
   const videos = [
   {
     id: "video0",
-    name: "Rajendran Sakthivel",
+    name: "Mr Rajendran Sakthivel",
     src: "https://player.vimeo.com/video/1103351104?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&controls=0&sharing=0&autoplay=0&loop=0"
   },
   {
