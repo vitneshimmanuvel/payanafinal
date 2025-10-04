@@ -75,7 +75,7 @@ const HelpCommunity = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('http://13.201.58.112:5000/submit-work-form', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/submit-work-form`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

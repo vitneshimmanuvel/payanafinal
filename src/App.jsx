@@ -13,9 +13,11 @@ import StudyOptions from './components/StudyOptions'
 import Techarts from './components/Techarts'
 import TestimonialSection from './components/TestimonialSection'
 import WhatsAppButton from './components/WhatsAppButton'
+import AdPopup from './components/AdPopup '
 function App() {
   return (
     <div className='total'>
+       <AdPopup />
       <Navbartop />
       <BannerSection />
       <div id='tech'>

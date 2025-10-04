@@ -73,7 +73,7 @@ const StudyOptions = () => {
             ...formData
         };
 
-        fetch('http://13.201.58.112:5000/submit-form', {
+        fetch(`${import.meta.env.VITE_API_URL}/submit-form`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

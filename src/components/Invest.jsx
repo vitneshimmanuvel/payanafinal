@@ -27,7 +27,9 @@ const Invest = () => {
     }));
 
     try {
-      const response = await fetch('http://13.201.58.112:5000/submit-invest-form', {
+
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/submit-invest-form`, {
+
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -36,7 +38,7 @@ const Invest = () => {
       });
 
       const data = await response.json();
-      //alfa beta
+      //alfa beta 
       if (data.success) {
         setSubmissions(prev => ({
           ...prev,
