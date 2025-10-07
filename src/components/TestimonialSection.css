@@ -2,6 +2,7 @@
 .testimonial-section {
  
   background-color: #f5f5f5;
+  padding-bottom: 1%;
 }
 
 .text-content {
@@ -26,19 +27,22 @@
 .testimonial-row {
  padding: 1%;
   display: flex;
-  overflow-x: hidden;
+  overflow-x: auto;
   gap: 2rem;
   width: 100%;
 
   margin: 0 auto;
   scroll-behavior: smooth;
-  padding-bottom: 20px; /* Space for scrollbar */
+  padding-bottom: 20px;
+   /* For Firefox */
+  scrollbar-color: rgba(3, 41, 0, 0.3) rgba(127, 189, 2, 0.05); /* Space for scrollbar */
 }
 
 /* Hide scrollbar for cleaner look */
 .testimonial-row::-webkit-scrollbar {
-  display: none;
+  height: 10px; /* Slim scrollbar height */
 }
+
 
 .video-card {
   flex: 0 0 auto;
@@ -184,8 +188,7 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
+  
   }
   
   .testimonial-row:hover {
