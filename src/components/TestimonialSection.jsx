@@ -1,65 +1,60 @@
 import "./TestimonialSection.css";
+import Player from "@vimeo/player";
 import React, { useRef, useEffect, useState } from "react";
 
 const TestimonialSection = () => {
-  const API_URL = import.meta.env.VITE_API_URL ;
-  
   const trackRef = useRef(null);
-  const videoRefs = useRef([]);
+  const iframeRefs = useRef([]);
+  const playersRef = useRef([]);
+
   const [playingState, setPlayingState] = useState([]);
   const [isPaused, setIsPaused] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
-  const [videos, setVideos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [videoOrientations, setVideoOrientations] = useState([]);
 
-  
+  const videos = [
+  {
+    id: "video0",
+    name: "Rajendran Sakthivel",
+    src: "https://player.vimeo.com/video/1103351104?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&controls=0&sharing=0&autoplay=0&loop=0"
+  },
+  {
+    id: "video1",
+    name: "Mrs. Manju",
+    src: "https://player.vimeo.com/video/1081228912?h=477900a8cb&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
+  },
+  {
+    id: "video2",
+    name: "Ms Jeslin Sabatini",
+    src: "https://player.vimeo.com/video/1084259988?badge=0&title=0&byline=0&portrait=0&controls=0&sharing=0&autoplay=0&loop=0"
+  },
+  {
+    id: "video3",
+    name: "Ms Mohana Sangari",
+    src: "https://player.vimeo.com/video/1078787624?h=8817470ba2&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
+  },
+  {
+    id: "video4",
+    name: "Mr Haree Harun",
+    src: "https://player.vimeo.com/video/1084259918?badge=0&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
+  },
+  {
+    id: "video5",
+    name: "Mr Vignesh Sivakumar",
+    src: "https://player.vimeo.com/video/1090840248?h=0b3a8f1943&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
+  },
+  {
+    id: "video6",
+    name: "Mr Neil Issac",
+    src: "https://player.vimeo.com/video/1090840047?h=a28c1515af&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
+  }
+];
+
+
   useEffect(() => {
-    const fetchTestimonials = async () => {
-      try {
-        const response = await fetch(`${API_URL}/testimonials`);
-        const data = await response.json();
-        
-        if (data.success && data.data.length > 0) {
-          const formattedVideos = data.data.map((testimonial) => ({
-            id: testimonial.id,
-            name: testimonial.prefix !== 'None' 
-              ? `${testimonial.prefix} ${testimonial.name}`
-              : testimonial.name,
-            src: testimonial.video_url,
-            dbId: testimonial.id
-          }));
-          
-          setVideos(formattedVideos);
-          setPlayingState(Array(formattedVideos.length).fill(false));
-          setVideoOrientations(Array(formattedVideos.length).fill('portrait'));
-        }
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching testimonials:', error);
-        setLoading(false);
-      }
-    };
+    setPlayingState(Array(videos.length).fill(false));
+  }, [videos.length]);
 
-    fetchTestimonials();
-  }, [API_URL]);
-
-  // Detect video orientation when metadata loads
-  const handleVideoMetadata = (index) => {
-    const video = videoRefs.current[index];
-    if (!video) return;
-
-    const aspectRatio = video.videoWidth / video.videoHeight;
-    const isLandscape = aspectRatio > 1;
-    
-    setVideoOrientations((prev) => {
-      const next = [...prev];
-      next[index] = isLandscape ? 'landscape' : 'portrait';
-      return next;
-    });
-  };
-
-  // Detect desktop viewport
+  // Detect desktop
   useEffect(() => {
     const checkDesktop = () => setIsDesktop(window.matchMedia("(min-width: 1240px)").matches);
     checkDesktop();
@@ -67,9 +62,9 @@ const TestimonialSection = () => {
     return () => window.removeEventListener("resize", checkDesktop);
   }, []);
 
-  // Auto-scroll right-to-left animation (only on desktop) - NO DUPLICATION
+  // Auto-scroll right-to-left when not paused
   useEffect(() => {
-    if (!isDesktop || videos.length === 0) return;
+    if (!isDesktop) return;
     const track = trackRef.current;
     if (!track) return;
 
@@ -80,11 +75,9 @@ const TestimonialSection = () => {
     const animate = (now) => {
       const delta = now - last;
       if (!isPaused) {
-        track.scrollLeft += (speed * delta) / 1000; // Scroll left to right
-        
-        // Loop back to start when reaching the end
-        if (track.scrollLeft >= track.scrollWidth - track.clientWidth) {
-          track.scrollLeft = 0;
+        track.scrollLeft -= (speed * delta) / 1000;
+        if (track.scrollLeft <= 0) {
+          track.scrollLeft = track.scrollWidth;
         }
       }
       last = now;
@@ -93,75 +86,16 @@ const TestimonialSection = () => {
 
     animationFrame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrame);
-  }, [isDesktop, isPaused, videos]);
+  }, [isDesktop, isPaused]);
 
-  // Handle video hover on desktop - play on mouse enter
-  const handleVideoHoverEnter = async (index, dbId) => {
-    if (!isDesktop) return;
-    
-    const video = videoRefs.current[index];
-    if (!video) return;
-
-    try {
-      await video.play();
-      setPlayingState((prev) => {
-        const next = [...prev];
-        next[index] = true;
-        return next;
-      });
-
-      // Track view count (only once per hover)
-      try {
-        await fetch(`${API_URL}/testimonials/${dbId}/view`, {
-          method: 'POST'
-        });
-      } catch (error) {
-        console.error('Error tracking view:', error);
-      }
-    } catch (error) {
-      console.error('Error playing video:', error);
+  // Toggle play/pause for individual videos
+  const handlePlay = (index) => {
+    if (!playersRef.current[index]) {
+      playersRef.current[index] = new Player(iframeRefs.current[index]);
     }
-  };
-
-  // Handle video hover on desktop - pause on mouse leave
-  const handleVideoHoverLeave = (index) => {
-    if (!isDesktop) return;
-    
-    const video = videoRefs.current[index];
-    if (!video) return;
-
-    video.pause();
-    video.currentTime = 0; // Reset to beginning
-    setPlayingState((prev) => {
-      const next = [...prev];
-      next[index] = false;
-      return next;
-    });
-  };
-
-  // Toggle play/pause for mobile (click)
-  const handleVideoClick = async (index, dbId) => {
-    if (isDesktop) return; // Skip on desktop
-    
-    const video = videoRefs.current[index];
-    if (!video) return;
-
-    if (playingState[index]) {
-      video.pause();
-    } else {
-      await video.play();
-      
-      // Track view count (only on first play)
-      if (!playingState[index]) {
-        try {
-          await fetch(`${API_URL}/testimonials/${dbId}/view`, {
-            method: 'POST'
-          });
-        } catch (error) {
-          console.error('Error tracking view:', error);
-        }
-      }
-    }
+    const player = playersRef.current[index];
+    if (playingState[index]) player.pause();
+    else player.play();
 
     setPlayingState((prev) => {
       const next = [...prev];
@@ -169,43 +103,6 @@ const TestimonialSection = () => {
       return next;
     });
   };
-
-  // Skeleton loader component
-  const SkeletonCard = ({ index }) => (
-    <div className="video-card skeleton-card" key={`skeleton-${index}`}>
-      <div className="skeleton-shimmer"></div>
-    </div>
-  );
-
-  // Loading state
-  if (loading) {
-    return (
-      <section className="testimonial-section">
-        <div className="text-content">
-          <h2><span>Client</span> Testimonials</h2>
-          <p>Our Success Stories</p>
-        </div>
-
-        <div className="testimonial-row">
-          {[...Array(5)].map((_, idx) => (
-            <SkeletonCard key={idx} index={idx} />
-          ))}
-        </div>
-      </section>
-    );
-  }
-
-  // Empty state
-  if (videos.length === 0) {
-    return (
-      <section className="testimonial-section">
-        <div className="text-content">
-          <h2><span>Client</span> Testimonials</h2>
-          <p>No testimonials available at the moment.</p>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section className="testimonial-section">
@@ -217,42 +114,34 @@ const TestimonialSection = () => {
       <div
         className="testimonial-row"
         ref={trackRef}
-        onMouseEnter={() => isDesktop && setIsPaused(true)}
-        onMouseLeave={() => isDesktop && setIsPaused(false)}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
       >
         {videos.map((video, idx) => (
           <div
             key={video.id}
-            className={`video-card ${videoOrientations[idx]}`}
+            className="video-card"
             data-name={video.name}
-            onMouseEnter={() => handleVideoHoverEnter(idx, video.dbId)}
-            onMouseLeave={() => handleVideoHoverLeave(idx)}
-            onClick={() => handleVideoClick(idx, video.dbId)}
+            onClick={() => handlePlay(idx)}
           >
-            <div className="video-wrapper">
-              <video
-                ref={(el) => (videoRefs.current[idx] = el)}
-                src={video.src}
-                className={`testimonial-video ${videoOrientations[idx]}`}
-                playsInline
-                preload="metadata"
-                muted
-                loop
-                onLoadedMetadata={() => handleVideoMetadata(idx)}
-              />
-            </div>
-            
+            <div className="video-overlay"></div>
+            <iframe
+              ref={(el) => (iframeRefs.current[idx] = el)}
+              src={video.src}
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              title={`Vimeo ${video.id}`}
+            ></iframe>
             {!playingState[idx] && (
-              <div className="play-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="white" stroke="none">
+              <div
+                className="play-button"
+                onClick={(e) => { e.stopPropagation(); handlePlay(idx); }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polygon points="5 3 19 12 5 21 5 3"></polygon>
                 </svg>
               </div>
             )}
-            
-            <div className="video-name-overlay">
-              <p>{video.name}</p>
-            </div>
           </div>
         ))}
       </div>
