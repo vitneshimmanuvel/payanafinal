@@ -11,43 +11,32 @@ const TestimonialSection = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
 
-  const videos = [
-  {
-    id: "video0",
-    name: "Rajendran Sakthivel",
-    src: "https://player.vimeo.com/video/1103351104?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&controls=0&sharing=0&autoplay=0&loop=0"
-  },
-  {
-    id: "video1",
-    name: "Mrs. Manju",
-    src: "https://player.vimeo.com/video/1081228912?h=477900a8cb&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
-  },
-  {
-    id: "video2",
-    name: "Ms Jeslin Sabatini",
-    src: "https://player.vimeo.com/video/1084259988?badge=0&title=0&byline=0&portrait=0&controls=0&sharing=0&autoplay=0&loop=0"
-  },
-  {
-    id: "video3",
-    name: "Ms Mohana Sangari",
-    src: "https://player.vimeo.com/video/1078787624?h=8817470ba2&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
-  },
-  {
-    id: "video4",
-    name: "Mr Haree Harun",
-    src: "https://player.vimeo.com/video/1084259918?badge=0&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
-  },
-  {
-    id: "video5",
-    name: "Mr Vignesh Sivakumar",
-    src: "https://player.vimeo.com/video/1090840248?h=0b3a8f1943&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
-  },
-  {
-    id: "video6",
-    name: "Mr Neil Issac",
-    src: "https://player.vimeo.com/video/1090840047?h=a28c1515af&title=0&byline=0&portrait=0&badge=0&controls=0&sharing=0&autoplay=0&loop=0"
-  }
-];
+  /* const videos = [
+    // Hardcoded videos removed
+  ]; */
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/testimonials');
+        const data = await response.json();
+        if (data.success) {
+          // Map backend data to component format
+          const formattedVideos = data.data.map(t => ({
+            id: t.id.toString(),
+            name: t.name,
+            src: t.video_url
+          }));
+          setVideos(formattedVideos);
+        }
+      } catch (error) {
+        console.error('Error fetching testimonials:', error);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
 
 
   useEffect(() => {
@@ -90,12 +79,23 @@ const TestimonialSection = () => {
 
   // Toggle play/pause for individual videos
   const handlePlay = (index) => {
-    if (!playersRef.current[index]) {
-      playersRef.current[index] = new Player(iframeRefs.current[index]);
+    const video = videos[index];
+    const element = iframeRefs.current[index];
+    
+    if (video.src.includes('player.vimeo.com')) {
+        if (!playersRef.current[index]) {
+          playersRef.current[index] = new Player(element);
+        }
+        const player = playersRef.current[index];
+        if (playingState[index]) player.pause();
+        else player.play();
+    } else {
+        if (playingState[index]) {
+            element.pause();
+        } else {
+            element.play();
+        }
     }
-    const player = playersRef.current[index];
-    if (playingState[index]) player.pause();
-    else player.play();
 
     setPlayingState((prev) => {
       const next = [...prev];
@@ -125,13 +125,30 @@ const TestimonialSection = () => {
             onClick={() => handlePlay(idx)}
           >
             <div className="video-overlay"></div>
-            <iframe
-              ref={(el) => (iframeRefs.current[idx] = el)}
-              src={video.src}
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              title={`Vimeo ${video.id}`}
-            ></iframe>
+            {video.src.includes('player.vimeo.com') ? (
+               <iframe
+                ref={(el) => (iframeRefs.current[idx] = el)}
+                src={video.src}
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                title={`Vimeo ${video.id}`}
+              ></iframe>
+            ) : (
+               <video
+                ref={(el) => (iframeRefs.current[idx] = el)}
+                src={video.src}
+                className="w-full h-full object-cover"
+                style={{ borderRadius: '20px' }} 
+                onEnded={() => {
+                    setPlayingState(prev => {
+                        const next = [...prev];
+                        next[idx] = false;
+                        return next;
+                    });
+                }}
+              />
+            )}
+            
             {!playingState[idx] && (
               <div
                 className="play-button"
