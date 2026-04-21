@@ -20,6 +20,7 @@ const HelpCommunity = () => {
     experience: '',
     name: '',
     email: '',
+    countryCode: '+91',
     phone: '',
   });
   const [formErrors, setFormErrors] = useState({});
@@ -43,8 +44,8 @@ const HelpCommunity = () => {
     let errors = {};
     let isValid = true;
 
-    if (!formData.name.trim()) {
-      errors.name = 'Name is required';
+    if (!formData.name.trim() || !/^[a-zA-Z\s]+$/.test(formData.name)) {
+      errors.name = 'Valid name (letters only) is required';
       isValid = false;
     }
 
@@ -59,8 +60,8 @@ const HelpCommunity = () => {
     if (!formData.phone) {
       errors.phone = 'Phone number is required';
       isValid = false;
-    } else if (!/^[0-9]{10}$/.test(formData.phone)) {
-      errors.phone = 'Please enter a valid phone number (10 digits)';
+    } else if (formData.phone.length !== 10) {
+      errors.phone = 'Please enter exactly 10 digits';
       isValid = false;
     }
 
@@ -69,6 +70,7 @@ const HelpCommunity = () => {
   };
 
   const handleSubmit = async () => {
+    if (isSubmitting) return;
     const isValid = validateForm();
     if (!isValid) return;
 
@@ -100,9 +102,25 @@ const HelpCommunity = () => {
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    if (formErrors[e.target.name]) {
-      setFormErrors({ ...formErrors, [e.target.name]: null });
+    const { name, value } = e.target;
+    
+    if (name === 'name') {
+      if (value !== '' && !/^[a-zA-Z\s]*$/.test(value)) return;
+    }
+    
+    if (name === 'phone') {
+      const digits = value.replace(/\D/g, '');
+      if (digits.length > 10) return;
+      setFormData({ ...formData, [name]: digits });
+      if (formErrors[name]) {
+        setFormErrors({ ...formErrors, [name]: null });
+      }
+      return;
+    }
+
+    setFormData({ ...formData, [name]: value });
+    if (formErrors[name]) {
+      setFormErrors({ ...formErrors, [name]: null });
     }
   };
 
@@ -246,18 +264,30 @@ const HelpCommunity = () => {
                 />
                 {formErrors.email && <p className="error-message">{formErrors.email}</p>}
               </div>
-
               <div className="form-group">
-                 
-                <input
-                  type="number"
-                  id="phone"
-                  placeholder="Enter your phone number"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  name="phone"
-                  className="input-field"
-                />
+                <div className="phone-input-container" style={{ display: 'flex', gap: '10px' }}>
+                  <select 
+                    name="countryCode" 
+                    value={formData.countryCode} 
+                    onChange={handleChange}
+                    className="input-field"
+                    style={{ width: '90px' }}
+                  >
+                    <option value="+91">+91</option>
+                    <option value="+1">+1</option>
+                    <option value="+44">+44</option>
+                  </select>
+                  <input
+                    type="text"
+                    id="phone"
+                    placeholder="10 digit number"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    name="phone"
+                    className="input-field"
+                    style={{ flex: 1 }}
+                  />
+                </div>
                 {formErrors.phone && <p className="error-message">{formErrors.phone}</p>}
               </div>
 
@@ -275,8 +305,8 @@ const HelpCommunity = () => {
 
           {step === 5 && (
             <div>
-              <h1 className="left-heading">Congratulations!</h1>
-              <p>You may be qualified for a job; please contact us.</p>
+              <h1 className="left-heading">Form Submitted Successfully!</h1>
+              <p>Congratulations! You may be qualified for a job; please contact us.</p>
               <button className="full-btn" onClick={() => setShowPopup(true)}>
                 Learn More
               </button>

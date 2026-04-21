@@ -29,10 +29,16 @@ const Navbartop = () => {
         }
     }, [activeCategory]);
 
+    const { pathname } = window.location;
+
     const handleClickScroll = (category) => {
-        const section = document.getElementById(category);
-        if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
+        if (pathname !== '/') {
+            window.location.href = `/#${category}`;
+        } else {
+            const section = document.getElementById(category);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
         }
         setIsMobileMenuOpen(false);
     };

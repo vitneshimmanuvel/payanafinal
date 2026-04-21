@@ -20,9 +20,11 @@ const levelDescriptions = {
   Turkish: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
 };
 
-const LanguageCard = ({ language, className, levels }) => {
+import { useNavigate } from 'react-router-dom';
+
+const LanguageCard = ({ language, className, levels, onClick }) => {
   return (
-    <div className="lang-card">
+    <div className="lang-card" onClick={onClick} style={{ cursor: 'pointer' }}>
       <div className="lang-card-inner">
         <div className={`lang-card-front ${className}`}>
           {language}
@@ -38,15 +40,16 @@ const LanguageCard = ({ language, className, levels }) => {
 };
 
 const Language = () => {
+  const navigate = useNavigate();
   const languages = [
     { name: 'French', class: 'french' },
     { name: 'German', class: 'german' },
-    { name: 'Japanese', class: 'japanese' },
+    { name: 'English', class: 'english' },
     { name: 'Mandarin', class: 'chinese' },
     { name: 'Russian', class: 'russian' },
     { name: 'Portuguese', class: 'portuguese' },
     { name: 'Spanish', class: 'spanish' },
-    { name: 'English', class: 'english' },
+    { name: 'Japanese', class: 'japanese' },
     { name: 'Korean', class: 'korean' },
     { name: 'Dutch', class: 'dutch' },
     { name: 'Italian', class: 'italian' },
@@ -70,6 +73,7 @@ const Language = () => {
             language={lang.name}
             className={lang.class}
             levels={levelDescriptions[lang.name]}
+            onClick={() => navigate(`/language/${lang.name.toLowerCase()}`)}
           />
         ))}
       </div>

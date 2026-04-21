@@ -13,6 +13,7 @@ const StudyOptions = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        countryCode: '+91',
         phone: ''
     });
     const [showPopup, setShowPopup] = useState(false);
@@ -37,8 +38,8 @@ const StudyOptions = () => {
         const newErrors = { name: '', email: '', phone: '' };
         let isValid = true;
 
-        if (!formData.name.trim()) {
-            newErrors.name = 'Name is required';
+        if (!formData.name.trim() || !/^[a-zA-Z\s]+$/.test(formData.name)) {
+            newErrors.name = 'Valid name (letters only) is required';
             isValid = false;
         }
 
@@ -48,8 +49,8 @@ const StudyOptions = () => {
             isValid = false;
         }
 
-        if (!Number(formData.phone) || formData.phone.length < 10) {
-            newErrors.phone = 'Valid phone number is required';
+        if (formData.phone.length !== 10) {
+            newErrors.phone = 'Phone number must be exactly 10 digits';
             isValid = false;
         }
 
@@ -58,7 +59,7 @@ const StudyOptions = () => {
     };
 
     const handleSubmit = () => {
-        if (!validateForm()) return;
+        if (!validateForm() || isSubmitting) return;
 
         setIsSubmitting(true); // Set submitting state to true
 
@@ -82,9 +83,13 @@ const StudyOptions = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log('Success:', data);
+            console.log('Response:', data);
             setIsSubmitting(false); // Reset submitting state
-            setStep(9); // Move to congratulations step
+            if (data.success) {
+                setStep(9); // Move to congratulations step
+            } else {
+                alert('There was an issue submitting your registration. Please try again.');
+            }
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -254,7 +259,12 @@ const StudyOptions = () => {
                                 type="text"
                                 placeholder="Name"
                                 value={formData.name}
-                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                onChange={(e) => {
+                                    const val = e.target.value;
+                                    if (val === '' || /^[a-zA-Z\s]*$/.test(val)) {
+                                        setFormData({ ...formData, name: val });
+                                    }
+                                }}
                             />
                             
                             {errors.email && <div className="error-message">{errors.email}</div>}
@@ -267,13 +277,33 @@ const StudyOptions = () => {
                             />
                             
                             {errors.phone && <p className="error-message">{errors.phone}</p>}
-                            <input
-                                className="input-field"
-                                type="number"
-                                placeholder="Phone number"
-                                value={formData.phone}
-                                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            />
+                            <div style={{ display: 'flex', gap: '10px' }}>
+                                <select 
+                                    className="input-field" 
+                                    style={{ width: '100px' }}
+                                    value={formData.countryCode}
+                                    onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
+                                >
+                                    <option value="+91">+91 (IN)</option>
+                                    <option value="+1">+1 (US)</option>
+                                    <option value="+44">+44 (UK)</option>
+                                    <option value="+61">+61 (AU)</option>
+                                    <option value="+1">+1 (CA)</option>
+                                    <option value="+49">+49 (DE)</option>
+                                </select>
+                                <input
+                                    className="input-field"
+                                    type="text"
+                                    placeholder="Phone number"
+                                    value={formData.phone}
+                                    onChange={(e) => {
+                                        const val = e.target.value.replace(/\D/g, '');
+                                        if (val.length <= 10) {
+                                            setFormData({ ...formData, phone: val });
+                                        }
+                                    }}
+                                />
+                            </div>
                             
                             <button 
                                 className="full-btn" 
@@ -287,8 +317,8 @@ const StudyOptions = () => {
 
                     {step === 9 && (
                         <>
-                            <h1>Congratulations!</h1>
-                            <p>You are eligible for our program.</p>
+                            <h1>Form Submitted Successfully!</h1>
+                            <p>Congratulations, you are eligible for our program.</p>
                             <button className="full-btn" onClick={() => setShowPopup(true)}>See Details</button>
                         </>
                     )}
