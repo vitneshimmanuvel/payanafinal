@@ -171,7 +171,7 @@ const PRScoreCalculator = () => {
         };
 
         const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-        const response = await fetch(`${API_URL}/api/submit-pr-score`, {
+        const response = await fetch(`${API_URL}/submit-pr-score`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
