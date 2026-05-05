@@ -7,6 +7,7 @@ import LanguageCourse from './components/LanguageCourse'
 import Footer from './components/Footer'
 import FooterBanner from './components/FooterBanner'
 import WhatsAppButton from './components/WhatsAppButton'
+import PrivacyPolicy from './components/PrivacyPolicy'
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/language/:lang" element={<LanguageCourse />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
 
       <Footer />
