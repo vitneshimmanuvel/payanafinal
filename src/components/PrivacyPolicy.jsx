@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+//dggsg
 const PrivacyPolicy = () => {
   useEffect(() => {
     document.title = "Privacy Policy - Payana Overseas";
