@@ -23,6 +23,22 @@ const AdPopup = () => {
   }, [isOpen, adData.length]);
 
   const fetchActiveAd = async () => {
+    // If we are on a profile assessment route, do not show the popup
+    const path = window.location.pathname.toLowerCase();
+    if (
+      path.includes('workprofile') || 
+      path.includes('work-profile') || 
+      path.includes('studyprofile') || 
+      path.includes('study-profile')
+    ) {
+      return;
+    }
+
+    // If the user has already interacted with/closed the popup in this session, do not show it
+    if (sessionStorage.getItem('ad_popup_dismissed') === 'true') {
+      return;
+    }
+
     try {
       const response = await fetch(`${API_URL}/ads/active`);
       const data = await response.json();
@@ -61,6 +77,37 @@ const AdPopup = () => {
 
   const closePopup = () => {
     setIsOpen(false);
+    sessionStorage.setItem('ad_popup_dismissed', 'true');
+  };
+
+  const handleCtaClick = (e, link) => {
+    sessionStorage.setItem('ad_popup_dismissed', 'true');
+    setIsOpen(false);
+
+    const lowerLink = link.toLowerCase();
+    if (lowerLink.includes('workprofile') || lowerLink.includes('work-profile')) {
+      e.preventDefault();
+      const element = document.getElementById('work-profile-form');
+      if (element) {
+        const absoluteTop = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: absoluteTop - 80,
+          behavior: "smooth"
+        });
+      }
+      window.history.pushState({}, '', '/workprofile');
+    } else if (lowerLink.includes('studyprofile') || lowerLink.includes('study-profile')) {
+      e.preventDefault();
+      const element = document.getElementById('study');
+      if (element) {
+        const absoluteTop = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: absoluteTop - 80,
+          behavior: "smooth"
+        });
+      }
+      window.history.pushState({}, '', '/studyprofile');
+    }
   };
 
   const nextSlide = (e) => {
@@ -322,6 +369,7 @@ const AdPopup = () => {
                       href={slide.button_link} 
                       target="_blank" 
                       rel="noopener noreferrer"
+                      onClick={(e) => handleCtaClick(e, slide.button_link)}
                       style={styles.actionButton}
                       onMouseEnter={(e) => {
                         e.target.style.transform = 'scale(1.05) translateY(-1px)';
