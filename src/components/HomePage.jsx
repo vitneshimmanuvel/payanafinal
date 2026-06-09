@@ -30,8 +30,9 @@ const HomePage = () => {
       setTimeout(() => {
         const element = document.getElementById(targetId);
         if (element) {
+          const absoluteTop = element.getBoundingClientRect().top + window.scrollY;
           window.scrollTo({
-            top: element.offsetTop - 80,
+            top: absoluteTop - 80,
             behavior: "smooth"
           });
         }
@@ -51,8 +52,9 @@ const HomePage = () => {
       if (!elementToScroll) return;
 
       setTimeout(() => {
+        const absoluteTop = elementToScroll.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
-          top: elementToScroll.offsetTop - 80,
+          top: absoluteTop - 80,
           behavior: "smooth"
         });
       }, 100);
