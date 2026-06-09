@@ -9,8 +9,13 @@ import FooterBanner from './components/FooterBanner'
 import WhatsAppButton from './components/WhatsAppButton'
 import PrivacyPolicy from './components/PrivacyPolicy'
 
+// Admin Panel Imports
+import AdminLogin from './admin/AdminLogin'
+import AdminDashboard from './admin/AdminDashboard'
+
 function App() {
   const location = useLocation();
+  const isAdminRoute = location.pathname.includes('payanaadmin');
 
   // Scroll to top when route changes
   useEffect(() => {
@@ -20,20 +25,29 @@ function App() {
   }, [location.pathname]);
 
   return (
-    <div className='total'>
-      <Navbartop />
+    <div className={isAdminRoute ? "w-full min-h-screen bg-gray-50" : "total"}>
+      {!isAdminRoute && <Navbartop />}
 
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/language/:lang" element={<LanguageCourse />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        
+        {/* Admin Login Routes */}
+        <Route path="/payanaoverseas/payanaadmin/login" element={<AdminLogin />} />
+        <Route path="/payanaoversas/payanaadmin/login" element={<AdminLogin />} />
+        
+        {/* Admin Dashboard Routes */}
+        <Route path="/payanaoverseas/payanaadmin/dashboard" element={<AdminDashboard />} />
+        <Route path="/payanaoversas/payanaadmin/dashboard" element={<AdminDashboard />} />
       </Routes>
 
-      <Footer />
-      <FooterBanner/>
-      <WhatsAppButton />
+      {!isAdminRoute && <Footer />}
+      {!isAdminRoute && <FooterBanner/>}
+      {!isAdminRoute && <WhatsAppButton />}
     </div>
   )
 }
 
 export default App
+
