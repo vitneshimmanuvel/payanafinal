@@ -89,7 +89,7 @@ const AdPopup = () => {
       display: isOpen ? 'flex' : 'none',
       justifyContent: 'center',
       alignItems: 'center',
-      zIndex: 9999,
+      zIndex: 999999,
       padding: '20px',
     },
     modalContainer: {

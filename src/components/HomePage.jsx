@@ -40,7 +40,6 @@ const HomePage = () => {
 
   return (
     <>
-      <AdPopup />
       <BannerSection />
       
       <div id='tech'>
@@ -69,6 +68,7 @@ const HomePage = () => {
       
       <NewsGPT />
       <TestimonialSection />
+      <AdPopup />
     </>
   );
 };
