@@ -78,6 +78,33 @@ const AdPopup = () => {
     setCurrentIndex(index);
   };
 
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    if (isLeftSwipe) {
+      setCurrentIndex((prev) => (prev + 1) % adData.length);
+    } else if (isRightSwipe) {
+      setCurrentIndex((prev) => (prev - 1 + adData.length) % adData.length);
+    }
+  };
+
   const styles = {
     overlay: {
       position: 'fixed',
@@ -154,6 +181,7 @@ const AdPopup = () => {
       alignItems: 'center',
       backgroundColor: '#000',
       overflow: 'hidden',
+      cursor: 'pointer',
     },
     adImage: {
       maxWidth: '100%',
@@ -251,12 +279,17 @@ const AdPopup = () => {
           ×
         </button>
         
-        <div style={styles.carouselWrapper}>
+        <div 
+          style={styles.carouselWrapper}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           {adData.map((slide, index) => {
             const isActive = index === currentIndex;
             return (
               <div key={slide.id} style={styles.slide(isActive)}>
-                <div style={styles.imageContainer}>
+                <div style={styles.imageContainer} onClick={nextSlide}>
                   <img
                     src={slide.image_url}
                     alt="Advertisement"

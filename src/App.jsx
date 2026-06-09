@@ -40,6 +40,12 @@ function App() {
         {/* Admin Dashboard Routes */}
         <Route path="/payanaoverseas/payanaadmin/dashboard" element={<AdminDashboard />} />
         <Route path="/payanaoversas/payanaadmin/dashboard" element={<AdminDashboard />} />
+
+        {/* Profile Assessment Routes */}
+        <Route path="/workprofile" element={<HomePage />} />
+        <Route path="/work-profile" element={<HomePage />} />
+        <Route path="/studyprofile" element={<HomePage />} />
+        <Route path="/study-profile" element={<HomePage />} />
       </Routes>
 
       {!isAdminRoute && <Footer />}

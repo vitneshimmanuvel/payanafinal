@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import BannerSection from './Baneer';
 import DentalProgram from './DentalProgram';
 import HelpCommunity from './HelpCommunity';
@@ -12,6 +13,32 @@ import TestimonialSection from './TestimonialSection';
 import AdPopup from './AdPopup ';
 
 const HomePage = () => {
+  const location = useLocation();
+
+  // Auto-scroll to work or study profile elements based on subroutes
+  useEffect(() => {
+    let targetId = '';
+    const path = location.pathname.toLowerCase();
+    
+    if (path.includes('workprofile') || path.includes('work-profile')) {
+      targetId = 'work';
+    } else if (path.includes('studyprofile') || path.includes('study-profile')) {
+      targetId = 'study';
+    }
+    
+    if (targetId) {
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          window.scrollTo({
+            top: element.offsetTop - 80,
+            behavior: "smooth"
+          });
+        }
+      }, 300);
+    }
+  }, [location.pathname]);
+
   // Auto-scroll to section when page loads with hash in URL
   useEffect(() => {
     const scrollToHashElement = () => {
