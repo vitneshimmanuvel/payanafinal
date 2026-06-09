@@ -21,7 +21,7 @@ const HomePage = () => {
     const path = location.pathname.toLowerCase();
     
     if (path.includes('workprofile') || path.includes('work-profile')) {
-      targetId = 'work';
+      targetId = 'work-profile-form';
     } else if (path.includes('studyprofile') || path.includes('study-profile')) {
       targetId = 'study';
     }
